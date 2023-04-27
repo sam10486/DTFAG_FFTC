@@ -1391,7 +1391,6 @@ b1ROM7_r16_syn:
 #ROM_DATA_GEN
 clean:
 	rm -f *.o
-	rm -rf BFFTP
 	rm -f $(ROMDATA_PATH)/*.txt
 	rm -f $(FFTC_PATH)/SRAM/*
 	rm -f $(FFTC_PATH)/syn_tcl/*
