@@ -1,23 +1,5 @@
-root_dir 		:= $(PWD)
 DTFAG_dir 		:= ./DTFAG
-
 ROMDATA_PATH 	:= ./$(DTFAG_dir)/ROM_DATA
-ROMDATA_v_PATH	:= ./$(DTFAG_dir)/ROM_v
-ROMDATA_LIB_PATH:= ./$(DTFAG_dir)/ROM_LIB
-rodsd_path   	:= /usr/cad/synopsys/CBDK_TSMC90GUTM_Arm_f1.0/CIC/Memory/rodsd/bin/rodsd
-rom_word_size 	:= 64
-bit_size      	:= 64
-double_bit_size := 128
-MUX       		:= 8
-Freq     		:= 200
-instnamerom0 = DTFAG_ROM0.txt
-instnamerom1 = DTFAG_ROM1.txt
-instnamerom2 = DTFAG_ROM2.txt
-instnamerom3 = DTFAG_ROM3.txt
-instnamerom4 = DTFAG_ROM4.txt
-instnamerom5 = DTFAG_ROM5.txt
-instnamerom6 = DTFAG_ROM6.txt
-instnamerom7 = DTFAG_ROM7.txt
 
 #----------------ROM init---------------------
 #include $(ROMDATA_PATH)/makefile
@@ -27,22 +9,19 @@ ROM_data_init:
 
 ROM_data_clean:
 	make -C $(ROMDATA_PATH) other-clean
+
+ROM_v:
+	make -C $(ROMDATA_PATH) ROM0_all;
+	make -C $(ROMDATA_PATH) ROM1_all;
+	make -C $(ROMDATA_PATH) ROM2_all;
+
+ROM_syn:
+	make -C $(ROMDATA_PATH) ROM0_syn_all;
+	make -C $(ROMDATA_PATH) ROM1_syn_all;
+	make -C $(ROMDATA_PATH) ROM2_syn_all;
 #--------------------------------------
 rtl:
 	irun test_FFTP.v +access+r +notimingchecks -loadpli1 debpli:novas_pli_boot
-
-# ROM generate
-# RTL simulation
-ROM_all: clean ROM0_gen ROM1_gen ROM2_gen ROM3_gen \
-		ROM4_gen ROM5_gen ROM6_gen ROM7_gen
-
-ROM0_gen:
-	cd $(ROMDATA_PATH); \
-	$(rodsd_path) verilog  -instname ROM0_$(rom_word_size)_$(bit_size) \
-	-code_file $(instnamerom0) -mux $(MUX) -words $(rom_word_size) \
-	-bits $(bit_size) -frequency $(Freq); \
-	mv *.rcf $(ROMDATA_v_PATH);\
-	mv *.v $(ROMDATA_v_PATH); 
 
 nWave: 
 	nWave &

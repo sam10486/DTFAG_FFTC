@@ -144,8 +144,9 @@ void DTFAG::DTFAG_DIF_MixedRadix () {
     }
 
     // -----------------------ZZ To Bin-------------------------
+    int ROM_upper_bound = 64;
     // ROM0
-    for(int k=0; k<radix_r1; k++){
+    for(int k=0; k<ROM_upper_bound; k++){
         vector<ZZ > ROM0_D1;
         vector<ZZ > ROM0_D2;
         vector<ZZ > ROM0_D3;
@@ -177,21 +178,42 @@ void DTFAG::DTFAG_DIF_MixedRadix () {
         ROM0_D13.resize(bit_width);
         ROM0_D14.resize(bit_width);
         ROM0_D15.resize(bit_width);
-        ROM0_D1 = DecToBin.ZZ_DecToBin(ROM0[k][1], bit_width);
-        ROM0_D2 = DecToBin.ZZ_DecToBin(ROM0[k][2], bit_width);
-        ROM0_D3 = DecToBin.ZZ_DecToBin(ROM0[k][3], bit_width);
-        ROM0_D4 = DecToBin.ZZ_DecToBin(ROM0[k][4], bit_width);
-        ROM0_D5 = DecToBin.ZZ_DecToBin(ROM0[k][5], bit_width);
-        ROM0_D6 = DecToBin.ZZ_DecToBin(ROM0[k][6], bit_width);
-        ROM0_D7 = DecToBin.ZZ_DecToBin(ROM0[k][7], bit_width);
-        ROM0_D8 = DecToBin.ZZ_DecToBin(ROM0[k][8], bit_width);
-        ROM0_D9 = DecToBin.ZZ_DecToBin(ROM0[k][9], bit_width);
-        ROM0_D10 = DecToBin.ZZ_DecToBin(ROM0[k][10], bit_width);
-        ROM0_D11 = DecToBin.ZZ_DecToBin(ROM0[k][11], bit_width);
-        ROM0_D12 = DecToBin.ZZ_DecToBin(ROM0[k][12], bit_width);
-        ROM0_D13 = DecToBin.ZZ_DecToBin(ROM0[k][13], bit_width);
-        ROM0_D14 = DecToBin.ZZ_DecToBin(ROM0[k][14], bit_width);
-        ROM0_D15 = DecToBin.ZZ_DecToBin(ROM0[k][15], bit_width);
+        if (k >= radix_r1){
+            for (int i = 0; i < ROM_upper_bound; i++){
+                ROM0_D1[i] = 0;
+                ROM0_D2[i] = 0;
+                ROM0_D3[i] = 0;
+                ROM0_D4[i] = 0;
+                ROM0_D5[i] = 0;
+                ROM0_D6[i] = 0;
+                ROM0_D7[i] = 0;
+                ROM0_D8[i] = 0;
+                ROM0_D9[i] = 0;
+                ROM0_D10[i] = 0;
+                ROM0_D11[i] = 0;
+                ROM0_D12[i] = 0;
+                ROM0_D13[i] = 0;
+                ROM0_D14[i] = 0;
+                ROM0_D15[i] = 0;
+            }
+        }else{
+            ROM0_D1 = DecToBin.ZZ_DecToBin(ROM0[k][1], bit_width);
+            ROM0_D2 = DecToBin.ZZ_DecToBin(ROM0[k][2], bit_width);
+            ROM0_D3 = DecToBin.ZZ_DecToBin(ROM0[k][3], bit_width);
+            ROM0_D4 = DecToBin.ZZ_DecToBin(ROM0[k][4], bit_width);
+            ROM0_D5 = DecToBin.ZZ_DecToBin(ROM0[k][5], bit_width);
+            ROM0_D6 = DecToBin.ZZ_DecToBin(ROM0[k][6], bit_width);
+            ROM0_D7 = DecToBin.ZZ_DecToBin(ROM0[k][7], bit_width);
+            ROM0_D8 = DecToBin.ZZ_DecToBin(ROM0[k][8], bit_width);
+            ROM0_D9 = DecToBin.ZZ_DecToBin(ROM0[k][9], bit_width);
+            ROM0_D10 = DecToBin.ZZ_DecToBin(ROM0[k][10], bit_width);
+            ROM0_D11 = DecToBin.ZZ_DecToBin(ROM0[k][11], bit_width);
+            ROM0_D12 = DecToBin.ZZ_DecToBin(ROM0[k][12], bit_width);
+            ROM0_D13 = DecToBin.ZZ_DecToBin(ROM0[k][13], bit_width);
+            ROM0_D14 = DecToBin.ZZ_DecToBin(ROM0[k][14], bit_width);
+            ROM0_D15 = DecToBin.ZZ_DecToBin(ROM0[k][15], bit_width);
+        }     
+        
         for (int i = 0; i < bit_width; i++){
             // 64 bits
             Bin_DTFAG_DIF_ROM0_B0 << ROM0_D1[bit_width-1-i];
@@ -204,13 +226,13 @@ void DTFAG::DTFAG_DIF_MixedRadix () {
             Bin_DTFAG_DIF_ROM0_B6 << ROM0_D12[bit_width-1-i];
             Bin_DTFAG_DIF_ROM0_B7 << ROM0_D14[bit_width-1-i];
         }
-        Bin_DTFAG_DIF_ROM0_B1 << "_";
-        Bin_DTFAG_DIF_ROM0_B2 << "_";
-        Bin_DTFAG_DIF_ROM0_B3 << "_";
-        Bin_DTFAG_DIF_ROM0_B4 << "_";
-        Bin_DTFAG_DIF_ROM0_B5 << "_";
-        Bin_DTFAG_DIF_ROM0_B6 << "_";
-        Bin_DTFAG_DIF_ROM0_B7 << "_";
+        //Bin_DTFAG_DIF_ROM0_B1 << "_";
+        //Bin_DTFAG_DIF_ROM0_B2 << "_";
+        //Bin_DTFAG_DIF_ROM0_B3 << "_";
+        //Bin_DTFAG_DIF_ROM0_B4 << "_";
+        //Bin_DTFAG_DIF_ROM0_B5 << "_";
+        //Bin_DTFAG_DIF_ROM0_B6 << "_";
+        //Bin_DTFAG_DIF_ROM0_B7 << "_";
         for (int i = 0; i < bit_width; i++){
             // 128 bits
             Bin_DTFAG_DIF_ROM0_B1 << ROM0_D3[bit_width-1-i];
@@ -232,7 +254,7 @@ void DTFAG::DTFAG_DIF_MixedRadix () {
     }
     
     // ROM1
-    for(int k=0; k<radix_r1; k++){
+    for(int k=0; k<ROM_upper_bound; k++){
         vector<ZZ > ROM1_D1;
         vector<ZZ > ROM1_D2;
         vector<ZZ > ROM1_D3;
@@ -264,21 +286,41 @@ void DTFAG::DTFAG_DIF_MixedRadix () {
         ROM1_D13.resize(bit_width);
         ROM1_D14.resize(bit_width);
         ROM1_D15.resize(bit_width);
-        ROM1_D1 = DecToBin.ZZ_DecToBin(ROM1[k][1], bit_width);
-        ROM1_D2 = DecToBin.ZZ_DecToBin(ROM1[k][2], bit_width);
-        ROM1_D3 = DecToBin.ZZ_DecToBin(ROM1[k][3], bit_width);
-        ROM1_D4 = DecToBin.ZZ_DecToBin(ROM1[k][4], bit_width);
-        ROM1_D5 = DecToBin.ZZ_DecToBin(ROM1[k][5], bit_width);
-        ROM1_D6 = DecToBin.ZZ_DecToBin(ROM1[k][6], bit_width);
-        ROM1_D7 = DecToBin.ZZ_DecToBin(ROM1[k][7], bit_width);
-        ROM1_D8 = DecToBin.ZZ_DecToBin(ROM1[k][8], bit_width);
-        ROM1_D9 = DecToBin.ZZ_DecToBin(ROM1[k][9], bit_width);
-        ROM1_D10 = DecToBin.ZZ_DecToBin(ROM1[k][10], bit_width);
-        ROM1_D11 = DecToBin.ZZ_DecToBin(ROM1[k][11], bit_width);
-        ROM1_D12 = DecToBin.ZZ_DecToBin(ROM1[k][12], bit_width);
-        ROM1_D13 = DecToBin.ZZ_DecToBin(ROM1[k][13], bit_width);
-        ROM1_D14 = DecToBin.ZZ_DecToBin(ROM1[k][14], bit_width);
-        ROM1_D15 = DecToBin.ZZ_DecToBin(ROM1[k][15], bit_width);
+        if (k >= radix_r1){
+            for (int i = 0; i < ROM_upper_bound; i++){
+                ROM1_D1[i] = 0;
+                ROM1_D2[i] = 0;
+                ROM1_D3[i] = 0;
+                ROM1_D4[i] = 0;
+                ROM1_D5[i] = 0;
+                ROM1_D6[i] = 0;
+                ROM1_D7[i] = 0;
+                ROM1_D8[i] = 0;
+                ROM1_D9[i] = 0;
+                ROM1_D10[i] = 0;
+                ROM1_D11[i] = 0;
+                ROM1_D12[i] = 0;
+                ROM1_D13[i] = 0;
+                ROM1_D14[i] = 0;
+                ROM1_D15[i] = 0;
+            }
+        }else{
+            ROM1_D1 = DecToBin.ZZ_DecToBin(ROM1[k][1], bit_width);
+            ROM1_D2 = DecToBin.ZZ_DecToBin(ROM1[k][2], bit_width);
+            ROM1_D3 = DecToBin.ZZ_DecToBin(ROM1[k][3], bit_width);
+            ROM1_D4 = DecToBin.ZZ_DecToBin(ROM1[k][4], bit_width);
+            ROM1_D5 = DecToBin.ZZ_DecToBin(ROM1[k][5], bit_width);
+            ROM1_D6 = DecToBin.ZZ_DecToBin(ROM1[k][6], bit_width);
+            ROM1_D7 = DecToBin.ZZ_DecToBin(ROM1[k][7], bit_width);
+            ROM1_D8 = DecToBin.ZZ_DecToBin(ROM1[k][8], bit_width);
+            ROM1_D9 = DecToBin.ZZ_DecToBin(ROM1[k][9], bit_width);
+            ROM1_D10 = DecToBin.ZZ_DecToBin(ROM1[k][10], bit_width);
+            ROM1_D11 = DecToBin.ZZ_DecToBin(ROM1[k][11], bit_width);
+            ROM1_D12 = DecToBin.ZZ_DecToBin(ROM1[k][12], bit_width);
+            ROM1_D13 = DecToBin.ZZ_DecToBin(ROM1[k][13], bit_width);
+            ROM1_D14 = DecToBin.ZZ_DecToBin(ROM1[k][14], bit_width);
+            ROM1_D15 = DecToBin.ZZ_DecToBin(ROM1[k][15], bit_width);
+        }    
         for (int i = 0; i < bit_width; i++){
             // 64 bits
             Bin_DTFAG_DIF_ROM1_B0 << ROM1_D1[bit_width-1-i];
@@ -291,13 +333,13 @@ void DTFAG::DTFAG_DIF_MixedRadix () {
             Bin_DTFAG_DIF_ROM1_B6 << ROM1_D12[bit_width-1-i];
             Bin_DTFAG_DIF_ROM1_B7 << ROM1_D14[bit_width-1-i];
         }
-        Bin_DTFAG_DIF_ROM1_B1 << "_";
-        Bin_DTFAG_DIF_ROM1_B2 << "_";
-        Bin_DTFAG_DIF_ROM1_B3 << "_";
-        Bin_DTFAG_DIF_ROM1_B4 << "_";
-        Bin_DTFAG_DIF_ROM1_B5 << "_";
-        Bin_DTFAG_DIF_ROM1_B6 << "_";
-        Bin_DTFAG_DIF_ROM1_B7 << "_";
+        //Bin_DTFAG_DIF_ROM1_B1 << "_";
+        //Bin_DTFAG_DIF_ROM1_B2 << "_";
+        //Bin_DTFAG_DIF_ROM1_B3 << "_";
+        //Bin_DTFAG_DIF_ROM1_B4 << "_";
+        //Bin_DTFAG_DIF_ROM1_B5 << "_";
+        //Bin_DTFAG_DIF_ROM1_B6 << "_";
+        //Bin_DTFAG_DIF_ROM1_B7 << "_";
         for (int i = 0; i < bit_width; i++){
             // 128 bits
             Bin_DTFAG_DIF_ROM1_B1 << ROM1_D3[bit_width-1-i];
@@ -318,7 +360,7 @@ void DTFAG::DTFAG_DIF_MixedRadix () {
         Bin_DTFAG_DIF_ROM1_B7 << endl;
     }
     // ROM2
-    for(int k=0; k<radix_r1; k++){
+    for(int k=0; k<ROM_upper_bound; k++){
         vector<ZZ > ROM2_D1;
         vector<ZZ > ROM2_D2;
         vector<ZZ > ROM2_D3;
@@ -350,21 +392,42 @@ void DTFAG::DTFAG_DIF_MixedRadix () {
         ROM2_D13.resize(bit_width);
         ROM2_D14.resize(bit_width);
         ROM2_D15.resize(bit_width);
-        ROM2_D1 = DecToBin.ZZ_DecToBin(ROM2[k][1], bit_width);
-        ROM2_D2 = DecToBin.ZZ_DecToBin(ROM2[k][2], bit_width);
-        ROM2_D3 = DecToBin.ZZ_DecToBin(ROM2[k][3], bit_width);
-        ROM2_D4 = DecToBin.ZZ_DecToBin(ROM2[k][4], bit_width);
-        ROM2_D5 = DecToBin.ZZ_DecToBin(ROM2[k][5], bit_width);
-        ROM2_D6 = DecToBin.ZZ_DecToBin(ROM2[k][6], bit_width);
-        ROM2_D7 = DecToBin.ZZ_DecToBin(ROM2[k][7], bit_width);
-        ROM2_D8 = DecToBin.ZZ_DecToBin(ROM2[k][8], bit_width);
-        ROM2_D9 = DecToBin.ZZ_DecToBin(ROM2[k][9], bit_width);
-        ROM2_D10 = DecToBin.ZZ_DecToBin(ROM2[k][10], bit_width);
-        ROM2_D11 = DecToBin.ZZ_DecToBin(ROM2[k][11], bit_width);
-        ROM2_D12 = DecToBin.ZZ_DecToBin(ROM2[k][12], bit_width);
-        ROM2_D13 = DecToBin.ZZ_DecToBin(ROM2[k][13], bit_width);
-        ROM2_D14 = DecToBin.ZZ_DecToBin(ROM2[k][14], bit_width);
-        ROM2_D15 = DecToBin.ZZ_DecToBin(ROM2[k][15], bit_width);
+        if (k >= radix_r1){
+            for (int i = 0; i < ROM_upper_bound; i++){
+                ROM2_D1[i] = 0;
+                ROM2_D2[i] = 0;
+                ROM2_D3[i] = 0;
+                ROM2_D4[i] = 0;
+                ROM2_D5[i] = 0;
+                ROM2_D6[i] = 0;
+                ROM2_D7[i] = 0;
+                ROM2_D8[i] = 0;
+                ROM2_D9[i] = 0;
+                ROM2_D10[i] = 0;
+                ROM2_D11[i] = 0;
+                ROM2_D12[i] = 0;
+                ROM2_D13[i] = 0;
+                ROM2_D14[i] = 0;
+                ROM2_D15[i] = 0;
+            }
+        }else{
+            ROM2_D1 = DecToBin.ZZ_DecToBin(ROM2[k][1], bit_width);
+            ROM2_D2 = DecToBin.ZZ_DecToBin(ROM2[k][2], bit_width);
+            ROM2_D3 = DecToBin.ZZ_DecToBin(ROM2[k][3], bit_width);
+            ROM2_D4 = DecToBin.ZZ_DecToBin(ROM2[k][4], bit_width);
+            ROM2_D5 = DecToBin.ZZ_DecToBin(ROM2[k][5], bit_width);
+            ROM2_D6 = DecToBin.ZZ_DecToBin(ROM2[k][6], bit_width);
+            ROM2_D7 = DecToBin.ZZ_DecToBin(ROM2[k][7], bit_width);
+            ROM2_D8 = DecToBin.ZZ_DecToBin(ROM2[k][8], bit_width);
+            ROM2_D9 = DecToBin.ZZ_DecToBin(ROM2[k][9], bit_width);
+            ROM2_D10 = DecToBin.ZZ_DecToBin(ROM2[k][10], bit_width);
+            ROM2_D11 = DecToBin.ZZ_DecToBin(ROM2[k][11], bit_width);
+            ROM2_D12 = DecToBin.ZZ_DecToBin(ROM2[k][12], bit_width);
+            ROM2_D13 = DecToBin.ZZ_DecToBin(ROM2[k][13], bit_width);
+            ROM2_D14 = DecToBin.ZZ_DecToBin(ROM2[k][14], bit_width);
+            ROM2_D15 = DecToBin.ZZ_DecToBin(ROM2[k][15], bit_width);
+        }
+               
         for (int i = 0; i < bit_width; i++){
             // 64 bits
             Bin_DTFAG_DIF_ROM2_B0 << ROM2_D1[bit_width-1-i];
@@ -377,13 +440,13 @@ void DTFAG::DTFAG_DIF_MixedRadix () {
             Bin_DTFAG_DIF_ROM2_B6 << ROM2_D12[bit_width-1-i];
             Bin_DTFAG_DIF_ROM2_B7 << ROM2_D14[bit_width-1-i];
         }
-        Bin_DTFAG_DIF_ROM2_B1 << "_";
-        Bin_DTFAG_DIF_ROM2_B2 << "_";
-        Bin_DTFAG_DIF_ROM2_B3 << "_";
-        Bin_DTFAG_DIF_ROM2_B4 << "_";
-        Bin_DTFAG_DIF_ROM2_B5 << "_";
-        Bin_DTFAG_DIF_ROM2_B6 << "_";
-        Bin_DTFAG_DIF_ROM2_B7 << "_";
+        //Bin_DTFAG_DIF_ROM2_B1 << "_";
+        //Bin_DTFAG_DIF_ROM2_B2 << "_";
+        //Bin_DTFAG_DIF_ROM2_B3 << "_";
+        //Bin_DTFAG_DIF_ROM2_B4 << "_";
+        //Bin_DTFAG_DIF_ROM2_B5 << "_";
+        //Bin_DTFAG_DIF_ROM2_B6 << "_";
+        //Bin_DTFAG_DIF_ROM2_B7 << "_";
         for (int i = 0; i < bit_width; i++){
             // 128 bits
             Bin_DTFAG_DIF_ROM2_B1 << ROM2_D3[bit_width-1-i];
