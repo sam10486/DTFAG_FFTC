@@ -1,5 +1,6 @@
 `include "../v_include/define.svh"
 `include "DTFAG_AGU.sv"
+`include "ROM_wrapper.sv"
 
 
 module DTFAG_top (
@@ -20,5 +21,7 @@ module DTFAG_top (
     );
 
 
-    
+    ROM_wrapper ROM_wrapper(
+        .clk(),
+    );
 endmodule
