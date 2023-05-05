@@ -315,7 +315,12 @@
  wire [SD_WIDTH-1:0]   ROMD4_D_wire ;                                       
  wire [SD_WIDTH-1:0]   ROMD5_D_wire ;                                       
  wire [SD_WIDTH-1:0]   ROMD6_D_wire ;                                       
- wire [SD_WIDTH-1:0]   ROMD7_D_wire ;                                       
+ wire [SD_WIDTH-1:0]   ROMD7_D_wire ;      
+
+ //----------DTFAG---------
+ wire [3:0]            DTFAG_j;
+ wire [3:0]            DTFAG_t;  
+ wire [3:0]            DTFAG_i;                                    
                                                                                                   
      //----------------------------------------------------    
  	CenCtrl u_CenCtrl(.MulValid_out(MulValid_out),                            
@@ -343,7 +348,11 @@
                       .DC_mode_sel_out(DC_mode_sel_wire),
  					  .Mul_sel_out(Mul_sel_wire),                             
  					  .RDC_sel_out(RDC_sel_wire),                             
- 					  .data_cnt_reg(data_cnt_wire),                           	                                       
+ 					  .data_cnt_reg(data_cnt_wire),  
+					  .DTFAG_j(DTFAG_j),
+                	  .DTFAG_t(DTFAG_t),
+                	  .DTFAG_i(DTFAG_i), 
+					  //input                          	                                       
  					  .rc_sel_in(rc_sel_wire),                                
  			          .AGU_en(AGU_en_wire),                                   
  					  .wrfd_en_in(wrfd_en_wire),                              
@@ -1054,5 +1063,16 @@
                                     .CEN(RomCen_wire),                      
                                     .A(ROMA_wire)                           
                                     );                                      
- 	                
+
+
+	//---------------DTFAG--------------------
+	DTFAG_top DTFAG_top(
+		// input
+		.clk		(clk		),
+		.rst_n		(rst_n		),
+		.ROM_CEN	(RomCen_wire),
+		.DTFAG_j	(DTFAG_j	),
+		.DTFAG_t	(DTFAG_t  	),
+		.DTFAG_i	(DTFAG_i   	)
+	);                
  endmodule                                                                  

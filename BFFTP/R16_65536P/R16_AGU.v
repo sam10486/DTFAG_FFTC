@@ -5,7 +5,11 @@
                 Mul_sel_out,                         
                 RDC_sel_out,                         
                 data_cnt_reg,                        
-                DC_mode_sel_out,                                              
+                DC_mode_sel_out,   
+                DTFAG_j,
+                DTFAG_t,
+                DTFAG_i,         
+                //input                                  
                 rc_sel_in,                           
                 AGU_en,                              
                 wrfd_en_in,                          
@@ -41,7 +45,10 @@ parameter S3      = 3'd3;
  output [1:0]            Mul_sel_out ;                               
  output [3:0]            RDC_sel_out ;                               
  output [DC_WIDTH-1:0]   data_cnt_reg ;                              
- output [1:0]            DC_mode_sel_out ;                           
+ output [1:0]            DC_mode_sel_out ;    
+ output reg [3:0]            DTFAG_j;
+ output reg [3:0]            DTFAG_t;  
+ output reg [3:0]            DTFAG_i;     
 
                                                                                                   
  input                   rc_sel_in ;                                 
@@ -75,7 +82,8 @@ parameter S3      = 3'd3;
  wire                 BN_wire ;                  
  wire [3:0]           RDC_sel_wire ;             
  wire            Mul_sel_wire ;             
-                                                                                                                                                                                      
+
+ reg [1:0] cnt;                                                                                                                                                  
                                                                                                                                                                                                                      
  	//                                                                                                          
    assign data_cnt_wire = (((AGU_en==1'b1)&&(data_cnt_reg==DCNT_V1))||                                         
@@ -169,5 +177,72 @@ parameter S3      = 3'd3;
            RDCsel_cnt_reg <= RDCsel_cnt_wire ;                                                                        
    	end                                                                                                            
    end                                                                                                                
-                                                                                                                       
- endmodule                                                                                                             
+
+
+
+
+  //-------------DTFAG parameter-------------------------
+  reg [1:0] DTFAG_cnt;
+  
+  always @(posedge clk or posedge rst_n) begin
+    if (~rst_n) begin
+      DTFAG_cnt <= 2'd0;
+    end else begin
+      if (AGU_en) begin
+        if (DTFAG_cnt == 2'd3) begin
+          DTFAG_cnt <= 2'd0;
+        end else begin
+          DTFAG_cnt <= DTFAG_cnt + 2'd1;
+        end
+      end else begin
+        DTFAG_cnt <= 2'd0;
+      end
+    end
+  end
+
+  always @(posedge clk or posedge rst_n) begin
+    if (~rst_n) begin
+      DTFAG_j <= 4'd0;
+    end else begin
+      if (DTFAG_cnt == 2'd3) begin
+        DTFAG_j <= DTFAG_j + 4'd1;
+      end else begin
+        DTFAG_j <= DTFAG_j;
+      end
+    end
+  end
+
+  always @(posedge clk or posedge rst_n) begin
+    if (~rst_n) begin
+      DTFAG_t <= 4'd0;
+    end else begin
+      if (DTFAG_j == 4'd15 && DTFAG_t == 4'd15 && DTFAG_cnt == 2'd3) begin
+        DTFAG_t <= 4'd0;
+      end else begin
+        if (DTFAG_j == 4'd15 && DTFAG_cnt == 2'd3) begin
+          DTFAG_t <= DTFAG_t + 4'd1;
+        end else begin
+          DTFAG_t <= DTFAG_t;
+        end
+      end
+    end
+  end
+
+  always @(posedge clk or posedge rst_n) begin
+    if (~rst_n) begin
+      DTFAG_i <= 4'd0;
+    end else begin
+      if (DTFAG_j == 4'd15 && DTFAG_t == 4'd15 && DTFAG_i == 4'd15 && DTFAG_cnt == 2'd3) begin
+        DTFAG_i <= 4'd0;
+      end else begin
+        if (DTFAG_j == 4'd15 && DTFAG_t == 4'd15 && DTFAG_cnt == 2'd3) begin
+          DTFAG_i <= DTFAG_i + 4'd1;
+        end else begin
+          DTFAG_i <= DTFAG_i;
+        end
+      end
+    end
+  end
+
+ endmodule                                                  
+

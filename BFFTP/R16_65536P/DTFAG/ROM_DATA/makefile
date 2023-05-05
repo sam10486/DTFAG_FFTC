@@ -40,10 +40,15 @@ main: $(TARGET)
 #-------------ROM v code generate---------------------
 
 ## ROM0 gen
-ROM0_all: ROM0_clean ROM0_B0_gen ROM0_B1_gen 
+ROM0_all: ROM0_clean ROM0_B0_gen ROM0_B1_gen ROM0_cp_file
 
 ROM0_clean:
 	rm -rf $(ROM0_PATH)/$(ROM0_DATA_v_PATH)/*.*
+
+ROM0_cp_file:
+	cd $(ROM0_PATH)/$(ROM0_DATA_v_PATH); \
+	cp *.rcf ./../../../v_src; \
+	cp *.rcf ./../../../../
 
 ROM0_B0_gen:
 	cd $(ROM0_PATH); \
@@ -63,10 +68,15 @@ ROM0_B1_gen:
 
 
 ## ROM1 gen
-ROM1_all: ROM1_clean ROM1_B0_gen ROM1_B1_gen 
+ROM1_all: ROM1_clean ROM1_B0_gen ROM1_B1_gen ROM1_cp_file
 
 ROM1_clean:
 	rm -rf $(ROM1_PATH)/$(ROM1_DATA_v_PATH)/*.*
+
+ROM1_cp_file:
+	cd $(ROM1_PATH)/$(ROM1_DATA_v_PATH); \
+	cp *.rcf ./../../../v_src;\
+	cp *.rcf ./../../../../
 
 ROM1_B0_gen:
 	cd $(ROM1_PATH); \
@@ -86,10 +96,15 @@ ROM1_B1_gen:
 
 	
 ## ROM2 gen
-ROM2_all: ROM2_clean ROM2_B0_gen ROM2_B1_gen 
+ROM2_all: ROM2_clean ROM2_B0_gen ROM2_B1_gen ROM2_cp_file
 
 ROM2_clean:
 	rm -rf $(ROM2_PATH)/$(ROM2_DATA_v_PATH)/*.*
+
+ROM2_cp_file:
+	cd $(ROM2_PATH)/$(ROM2_DATA_v_PATH); \
+	cp *.rcf ./../../../v_src;\
+	cp *.rcf ./../../../../
 
 ROM2_B0_gen:
 	cd $(ROM2_PATH); \

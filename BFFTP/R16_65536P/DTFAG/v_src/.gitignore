@@ -1,3 +1,4 @@
 /INCA_libs
 *.log
 *.history
+*.rcf

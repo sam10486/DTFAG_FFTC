@@ -1,5 +1,8 @@
 DTFAG_dir 		:= ./DTFAG
 ROMDATA_PATH 	:= ./$(DTFAG_dir)/ROM_DATA
+V_SRC			:= ./$(DTFAG_dir)/v_src
+V_INC			:= ./$(DTFAG_dir)/v_include
+
 
 #----------------ROM init---------------------
 #include $(ROMDATA_PATH)/makefile
@@ -8,7 +11,8 @@ ROM_data_init:
 	make -C $(ROMDATA_PATH) other-all
 
 ROM_data_clean:
-	make -C $(ROMDATA_PATH) other-clean
+	make -C $(ROMDATA_PATH) other-clean;
+	make -C $(V_SRC) other-clean
 
 ROM_v:
 	make -C $(ROMDATA_PATH) ROM0_all;
@@ -21,7 +25,10 @@ ROM_syn:
 	make -C $(ROMDATA_PATH) ROM2_syn_all;
 #--------------------------------------
 rtl:
-	irun test_FFTP.v +access+r +notimingchecks -loadpli1 debpli:novas_pli_boot
+	irun test_FFTP.sv \
+	+incdir+$(V_INC)+$(V_SRC) \
+	+access+r \
+	+notimingchecks -loadpli1 debpli:novas_pli_boot
 
 nWave: 
 	nWave &

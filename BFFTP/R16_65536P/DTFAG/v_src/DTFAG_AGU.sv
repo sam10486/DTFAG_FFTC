@@ -1,8 +1,9 @@
-`include "../v_include/define.svh"
+`include "define.svh"
 
 module DTFAG_AGU (
     input clk,
-    input rst,
+    input rst_n,
+    input ROM_CEN_in,
     input logic [`radix_width-1:0] DTFAG_i,
     input logic [`radix_width-1:0] DTFAG_t,
     input logic [`radix_width-1:0] DTFAG_j,
@@ -10,7 +11,8 @@ module DTFAG_AGU (
     output logic [`radix_width-1:0] MA0,
     output logic [`radix_width-1:0] MA1,
     output logic [`radix_width-1:0] MA2,
-    output logic [`radix_width-1:0] MA3
+    
+    output logic ROM_CEN_out
 );
 
     logic xor_i0_wire, xor_i1_wire, xor_i2_wire;
@@ -41,7 +43,5 @@ module DTFAG_AGU (
     assign Gray_not_t = {DTFAG_not_t[3], xor_not_t0_wire, xor_not_t1_wire, xor_not_t2_wire};
     assign MA2 = (DTFAG_i[0] == 1'd1) ? Gray_not_t : Gray_t;
 
-    assign MA3 = DTFAG_j;
-
-
+    assign ROM_CEN_out = ROM_CEN_in;
 endmodule
