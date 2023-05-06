@@ -7,6 +7,7 @@
 `define radix_r 16
 `define radix_width 4 //log2(radix)
 `define ROMA_width 4
+`define DC_WIDTH 15 //data counter
 
 
 `endif 

@@ -51,6 +51,9 @@
   `include "ROM7_4096_128.v" 
 
   `include "DTFAG_top.v"
+  `include "DTFAG_AGU.v"
+  `include "Memory_wrapper.v"
+  `include "DTFAG_Mul_process.v"
 
                                                                                                                               
  `timescale 1 ns/1 ps                                                                                                         

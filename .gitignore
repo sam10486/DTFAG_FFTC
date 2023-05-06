@@ -13,6 +13,8 @@
 /BFFTP/*/BSSLib.lib++
 /BFFTP/*/data
 /ROM_Data
+/BFFTP/*/*.rcf
 /input
 /test_input
 *.txt
+*.key

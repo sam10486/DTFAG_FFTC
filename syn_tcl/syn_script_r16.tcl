@@ -1,7 +1,7 @@
 set company  "VLSILAB"
 set designer "Shi-Yong Wu"
-set search_path      ". /opt/CIC/share/CBDK_TSMC90GUTM_Arm_f1.0/CIC/SynopsysDC/db ../Mem_lib $search_path"
-set target_library   "typical.db SRAM_SP_2048_128.db ROM0_4096_64.db ROM1_4096_128.db ROM2_4096_128.db ROM3_4096_128.db ROM4_4096_128.db ROM5_4096_128.db ROM6_4096_128.db ROM7_4096_128.db IFFTR0_4096_64.db IFFTR1_4096_128.db IFFTR2_4096_128.db IFFTR3_4096_128.db IFFTR4_4096_128.db IFFTR5_4096_128.db IFFTR6_4096_128.db IFFTR7_4096_128.db reorderROM0.db reorderROM1.db reorderROM2.db reorderROM3.db ireorderROM0.db ireorderROM1.db ireorderROM2.db ireorderROM3.db H_b0ROM0.db H_b0ROM1.db H_b0ROM2.db H_b0ROM3.db H_b0ROM4.db H_b0ROM5.db  H_b0ROM6.db H_b0ROM7.db H_b1ROM0.db H_b1ROM1.db H_b1ROM2.db H_b1ROM3.db H_b1ROM4.db H_b1ROM5.db  H_b1ROM6.db H_b1ROM7.db"
+set search_path      ". /usr/cad/synopsys/CBDK_TSMC90GUTM_Arm_f1.0/CIC/SynopsysDC/db ../Mem_lib $search_path"
+set target_library   "typical.db SRAM_SP_2048_128.db ROM0_4096_64.db ROM1_4096_128.db ROM2_4096_128.db ROM3_4096_128.db ROM4_4096_128.db ROM5_4096_128.db ROM6_4096_128.db ROM7_4096_128.db"
 #set target_library  "slow.db fast.db"
 set link_library     "* $target_library dw_foundation.sldb"
 set symbol_library   "tsmc090.sdb generic.sdb"
@@ -28,6 +28,14 @@ ort_nets -all -buffer_constant} {Change Naming Rule} {change_names -rule verilog
 
 set hdlin_while_loop_iterations 2000
 
+#--------------DTFAG------------------
+analyze -format verilog ../vlog/DTFAG/v_src/DTFAG_top.v
+analyze -format verilog ../vlog/DTFAG/v_src/DTFAG_AGU.v
+analyze -format verilog ../vlog/DTFAG/v_src/Memory_wrapper.v
+analyze -format verilog ../vlog/DTFAG/v_src/Register_file.v   
+
+analyze -format verilog ../vlog/DTFAG/v_include/define.v
+#-------------------------------------
 analyze -format verilog ../vlog/FFTP.v              
 analyze -format verilog ../vlog/CenCtrl.v           
 analyze -format verilog ../vlog/CLA4.v              
@@ -64,19 +72,8 @@ analyze -format verilog ../vlog/BU_S0.v
 analyze -format verilog ../vlog/BU.v                
 analyze -format verilog ../vlog/Pipe.v              
 analyze -format verilog ../vlog/Radix16_Pipe.v      
-analyze -format verilog ../vlog/Mux5.v
-analyze -format verilog ../vlog/Mux6.v
-analyze -format verilog ../vlog/BR.v
-analyze -format verilog ../vlog/R16_BU_outpipe.v
-analyze -format verilog ../vlog/R16_orderROM_Pipe.v
-analyze -format verilog ../vlog/IReorderMA_pip.v
-analyze -format verilog ../vlog/Rectrl.v
-analyze -format verilog ../vlog/R16_InpipeReg.v
-analyze -format verilog ../vlog/MulMod.v
-analyze -format verilog ../vlog/Mul.v
-analyze -format verilog ../vlog/TWIpipe.v
-analyze -format verilog ../vlog/TWIMux.v
-                                                    
+
+        
 elaborate FFTP -architecture verilog                
                                                     
 current_design FFTP                                 

@@ -240,7 +240,7 @@ ROM_R8_syn:  ROM_R8_F_syn ROM_R8_I_syn REORDER_r8_syn PRE_r8_syn
 ################################################################################################
 # Radix-16 
 #ROM_R16_syn: ROM_R16_F_syn ROM_R16_I_syn REORDER_r16_syn PRE_r16_syn
-ROM_R16_syn: ROM_R16_I_syn REORDER_r16_syn PRE_r16_syn
+ROM_R16_syn: ROM_R16_F_syn 
 	mv $(ROMDATA_PATH)/*.lib  $(FFTC_PATH)/syn/lib
 ################################################################################################
 ROM_CONFIG_R16_syn: ROM_R16_F_syn ROM_R16_I_syn

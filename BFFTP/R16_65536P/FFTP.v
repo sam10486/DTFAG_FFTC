@@ -1073,6 +1073,7 @@
 		.ROM_CEN	(RomCen_wire),
 		.DTFAG_j	(DTFAG_j	),
 		.DTFAG_t	(DTFAG_t  	),
-		.DTFAG_i	(DTFAG_i   	)
+		.DTFAG_i	(DTFAG_i   	),
+		.N_in		(N_in		)
 	);                
  endmodule                                                                  

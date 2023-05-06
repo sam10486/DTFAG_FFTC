@@ -94,7 +94,7 @@ void DTFAG::DTFAG_DIF_MixedRadix () {
     int Tw1_display = 0;
     int Tw0_display = false;
     int Tw_th = 1;
-    int debug = 1;
+    int debug = 0;
 
     vector<vector<ZZ > > ROM0;
     vector<vector<ZZ > > ROM1, ROM2;
