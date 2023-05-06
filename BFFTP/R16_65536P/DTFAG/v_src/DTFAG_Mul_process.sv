@@ -1,4 +1,4 @@
-`include "../v_include/define.svh"
+`include "../v_include/define.v"
 `include "./../../MulMod128.v"
 module DTFAG_Mul_process (
     input clk,

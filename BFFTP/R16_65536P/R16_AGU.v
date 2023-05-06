@@ -184,7 +184,7 @@ parameter S3      = 3'd3;
   //-------------DTFAG parameter-------------------------
   reg [1:0] DTFAG_cnt;
   
-  always @(posedge clk or posedge rst_n) begin
+  always @(posedge clk or negedge rst_n) begin
     if (~rst_n) begin
       DTFAG_cnt <= 2'd0;
     end else begin
@@ -200,45 +200,49 @@ parameter S3      = 3'd3;
     end
   end
 
-  always @(posedge clk or posedge rst_n) begin
+  always @(posedge clk or negedge rst_n) begin
     if (~rst_n) begin
       DTFAG_j <= 4'd0;
     end else begin
-      if (DTFAG_cnt == 2'd3) begin
+      if (AGU_en) begin
         DTFAG_j <= DTFAG_j + 4'd1;
       end else begin
-        DTFAG_j <= DTFAG_j;
+        DTFAG_j <= 4'd0;
       end
     end
   end
 
-  always @(posedge clk or posedge rst_n) begin
+  always @(posedge clk or negedge rst_n) begin
     if (~rst_n) begin
       DTFAG_t <= 4'd0;
     end else begin
-      if (DTFAG_j == 4'd15 && DTFAG_t == 4'd15 && DTFAG_cnt == 2'd3) begin
-        DTFAG_t <= 4'd0;
-      end else begin
-        if (DTFAG_j == 4'd15 && DTFAG_cnt == 2'd3) begin
-          DTFAG_t <= DTFAG_t + 4'd1;
+      if (AGU_en) begin
+        if (DTFAG_j == 4'd15 && DTFAG_t == 4'd15) begin
+          DTFAG_t <= 4'd0;
         end else begin
-          DTFAG_t <= DTFAG_t;
+          if (DTFAG_j == 4'd15) begin
+            DTFAG_t <= DTFAG_t + 4'd1;
+          end else begin
+            DTFAG_t <= DTFAG_t;
+          end
         end
       end
     end
   end
 
-  always @(posedge clk or posedge rst_n) begin
+  always @(posedge clk or negedge rst_n) begin
     if (~rst_n) begin
       DTFAG_i <= 4'd0;
     end else begin
-      if (DTFAG_j == 4'd15 && DTFAG_t == 4'd15 && DTFAG_i == 4'd15 && DTFAG_cnt == 2'd3) begin
-        DTFAG_i <= 4'd0;
-      end else begin
-        if (DTFAG_j == 4'd15 && DTFAG_t == 4'd15 && DTFAG_cnt == 2'd3) begin
-          DTFAG_i <= DTFAG_i + 4'd1;
+      if (AGU_en) begin
+        if (DTFAG_j == 4'd15 && DTFAG_t == 4'd15 && DTFAG_i == 4'd15) begin
+          DTFAG_i <= 4'd0;
         end else begin
-          DTFAG_i <= DTFAG_i;
+          if (DTFAG_j == 4'd15 && DTFAG_t == 4'd15) begin
+            DTFAG_i <= DTFAG_i + 4'd1;
+          end else begin
+            DTFAG_i <= DTFAG_i;
+          end
         end
       end
     end

@@ -1,26 +1,26 @@
-`include "define.svh"
+`include "../v_include/define.v"
 
 module DTFAG_AGU (
     input clk,
     input rst_n,
     input ROM_CEN_in,
-    input logic [`radix_width-1:0] DTFAG_i,
-    input logic [`radix_width-1:0] DTFAG_t,
-    input logic [`radix_width-1:0] DTFAG_j,
+    input [`radix_width-1:0] DTFAG_i,
+    input [`radix_width-1:0] DTFAG_t,
+    input [`radix_width-1:0] DTFAG_j,
 
-    output logic [`radix_width-1:0] MA0,
-    output logic [`radix_width-1:0] MA1,
-    output logic [`radix_width-1:0] MA2,
+    output wire [`radix_width-1:0] MA0,
+    output wire [`radix_width-1:0] MA1,
+    output wire [`radix_width-1:0] MA2,
     
-    output logic ROM_CEN_out
+    output wire ROM_CEN_out
 );
 
-    logic xor_i0_wire, xor_i1_wire, xor_i2_wire;
-    logic xor_t0_wire, xor_t1_wire, xor_t2_wire;
-    logic xor_not_t0_wire, xor_not_t1_wire, xor_not_t2_wire;
+    wire xor_i0_wire, xor_i1_wire, xor_i2_wire;
+    wire xor_t0_wire, xor_t1_wire, xor_t2_wire;
+    wire xor_not_t0_wire, xor_not_t1_wire, xor_not_t2_wire;
 
-    logic [`radix_width-1:0] DTFAG_not_t;
-    logic [`radix_width-1:0] Gray_i, Gray_t, Gray_not_t;
+    wire [`radix_width-1:0] DTFAG_not_t;
+    wire [`radix_width-1:0] Gray_i, Gray_t, Gray_not_t;
 
     assign MA0 = DTFAG_j;
     // for Gray code G(i)

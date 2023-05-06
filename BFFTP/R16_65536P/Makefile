@@ -12,7 +12,9 @@ ROM_data_init:
 
 ROM_data_clean:
 	make -C $(ROMDATA_PATH) other-clean;
-	make -C $(V_SRC) other-clean
+	make -C $(V_SRC) other-clean;
+	rm -rf *_64_128_verilog.rcf;
+	rm -rf *_64_64_verilog.rcf;
 
 ROM_v:
 	make -C $(ROMDATA_PATH) ROM0_all;

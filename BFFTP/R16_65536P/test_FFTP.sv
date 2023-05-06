@@ -50,7 +50,7 @@
   `include "ROM6_4096_128.v" 
   `include "ROM7_4096_128.v" 
 
-  `include "DTFAG_top.sv"
+  `include "DTFAG_top.v"
 
                                                                                                                               
  `timescale 1 ns/1 ps                                                                                                         

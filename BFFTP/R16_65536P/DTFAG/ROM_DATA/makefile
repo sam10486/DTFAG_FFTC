@@ -40,7 +40,8 @@ main: $(TARGET)
 #-------------ROM v code generate---------------------
 
 ## ROM0 gen
-ROM0_all: ROM0_clean ROM0_B0_gen ROM0_B1_gen ROM0_cp_file
+ROM0_all: ROM0_clean ROM0_B0_gen ROM0_B1_gen ROM0_B2_gen ROM0_B3_gen \
+		 ROM0_B4_gen ROM0_B5_gen ROM0_B6_gen ROM0_B7_gen ROM0_cp_file
 
 ROM0_clean:
 	rm -rf $(ROM0_PATH)/$(ROM0_DATA_v_PATH)/*.*
@@ -52,9 +53,9 @@ ROM0_cp_file:
 
 ROM0_B0_gen:
 	cd $(ROM0_PATH); \
-	$(rodsd_path) verilog  -instname ROM0_B0_$(rom_word_size)_$(double_bit_size) \
+	$(rodsd_path) verilog  -instname ROM0_B0_$(rom_word_size)_$(bit_size) \
 	-code_file $(instnamerom_ROM0_B0) -mux $(MUX) -words $(rom_word_size) \
-	-bits $(double_bit_size) -frequency $(Freq); \
+	-bits $(bit_size) -frequency $(Freq); \
 	mv *.rcf $(ROM0_DATA_v_PATH); \
 	mv *.v $(ROM0_DATA_v_PATH); 
 
@@ -66,9 +67,57 @@ ROM0_B1_gen:
 	mv *.rcf $(ROM0_DATA_v_PATH); \
 	mv *.v $(ROM0_DATA_v_PATH); 
 
+ROM0_B2_gen:
+	cd $(ROM0_PATH); \
+	$(rodsd_path) verilog  -instname ROM0_B2_$(rom_word_size)_$(double_bit_size) \
+	-code_file $(instnamerom_ROM0_B2) -mux $(MUX) -words $(rom_word_size) \
+	-bits $(double_bit_size) -frequency $(Freq); \
+	mv *.rcf $(ROM0_DATA_v_PATH); \
+	mv *.v $(ROM0_DATA_v_PATH); 
+
+ROM0_B3_gen:
+	cd $(ROM0_PATH); \
+	$(rodsd_path) verilog  -instname ROM0_B3_$(rom_word_size)_$(double_bit_size) \
+	-code_file $(instnamerom_ROM0_B3) -mux $(MUX) -words $(rom_word_size) \
+	-bits $(double_bit_size) -frequency $(Freq); \
+	mv *.rcf $(ROM0_DATA_v_PATH); \
+	mv *.v $(ROM0_DATA_v_PATH); 
+
+ROM0_B4_gen:
+	cd $(ROM0_PATH); \
+	$(rodsd_path) verilog  -instname ROM0_B4_$(rom_word_size)_$(double_bit_size) \
+	-code_file $(instnamerom_ROM0_B4) -mux $(MUX) -words $(rom_word_size) \
+	-bits $(double_bit_size) -frequency $(Freq); \
+	mv *.rcf $(ROM0_DATA_v_PATH); \
+	mv *.v $(ROM0_DATA_v_PATH); 
+
+ROM0_B5_gen:
+	cd $(ROM0_PATH); \
+	$(rodsd_path) verilog  -instname ROM0_B5_$(rom_word_size)_$(double_bit_size) \
+	-code_file $(instnamerom_ROM0_B5) -mux $(MUX) -words $(rom_word_size) \
+	-bits $(double_bit_size) -frequency $(Freq); \
+	mv *.rcf $(ROM0_DATA_v_PATH); \
+	mv *.v $(ROM0_DATA_v_PATH); 
+
+ROM0_B6_gen:
+	cd $(ROM0_PATH); \
+	$(rodsd_path) verilog  -instname ROM0_B6_$(rom_word_size)_$(double_bit_size) \
+	-code_file $(instnamerom_ROM0_B6) -mux $(MUX) -words $(rom_word_size) \
+	-bits $(double_bit_size) -frequency $(Freq); \
+	mv *.rcf $(ROM0_DATA_v_PATH); \
+	mv *.v $(ROM0_DATA_v_PATH); 
+
+ROM0_B7_gen:
+	cd $(ROM0_PATH); \
+	$(rodsd_path) verilog  -instname ROM0_B7_$(rom_word_size)_$(double_bit_size) \
+	-code_file $(instnamerom_ROM0_B7) -mux $(MUX) -words $(rom_word_size) \
+	-bits $(double_bit_size) -frequency $(Freq); \
+	mv *.rcf $(ROM0_DATA_v_PATH); \
+	mv *.v $(ROM0_DATA_v_PATH); 
 
 ## ROM1 gen
-ROM1_all: ROM1_clean ROM1_B0_gen ROM1_B1_gen ROM1_cp_file
+ROM1_all: ROM1_clean ROM1_B0_gen ROM1_B1_gen ROM1_B2_gen ROM1_B3_gen \
+		 ROM1_B4_gen ROM1_B5_gen ROM1_B6_gen ROM1_B7_gen ROM1_cp_file
 
 ROM1_clean:
 	rm -rf $(ROM1_PATH)/$(ROM1_DATA_v_PATH)/*.*
@@ -80,9 +129,9 @@ ROM1_cp_file:
 
 ROM1_B0_gen:
 	cd $(ROM1_PATH); \
-	$(rodsd_path) verilog  -instname ROM1_B0_$(rom_word_size)_$(double_bit_size) \
+	$(rodsd_path) verilog  -instname ROM1_B0_$(rom_word_size)_$(bit_size) \
 	-code_file $(instnamerom_ROM1_B0) -mux $(MUX) -words $(rom_word_size) \
-	-bits $(double_bit_size) -frequency $(Freq); \
+	-bits $(bit_size) -frequency $(Freq); \
 	mv *.rcf $(ROM1_DATA_v_PATH); \
 	mv *.v $(ROM1_DATA_v_PATH); 
 
@@ -94,9 +143,57 @@ ROM1_B1_gen:
 	mv *.rcf $(ROM1_DATA_v_PATH); \
 	mv *.v $(ROM1_DATA_v_PATH); 
 
-	
+ROM1_B2_gen:
+	cd $(ROM1_PATH); \
+	$(rodsd_path) verilog  -instname ROM1_B2_$(rom_word_size)_$(double_bit_size) \
+	-code_file $(instnamerom_ROM1_B2) -mux $(MUX) -words $(rom_word_size) \
+	-bits $(double_bit_size) -frequency $(Freq); \
+	mv *.rcf $(ROM1_DATA_v_PATH); \
+	mv *.v $(ROM1_DATA_v_PATH); 
+
+ROM1_B3_gen:
+	cd $(ROM1_PATH); \
+	$(rodsd_path) verilog  -instname ROM1_B3_$(rom_word_size)_$(double_bit_size) \
+	-code_file $(instnamerom_ROM1_B3) -mux $(MUX) -words $(rom_word_size) \
+	-bits $(double_bit_size) -frequency $(Freq); \
+	mv *.rcf $(ROM1_DATA_v_PATH); \
+	mv *.v $(ROM1_DATA_v_PATH); 
+
+ROM1_B4_gen:
+	cd $(ROM1_PATH); \
+	$(rodsd_path) verilog  -instname ROM1_B4_$(rom_word_size)_$(double_bit_size) \
+	-code_file $(instnamerom_ROM1_B4) -mux $(MUX) -words $(rom_word_size) \
+	-bits $(double_bit_size) -frequency $(Freq); \
+	mv *.rcf $(ROM1_DATA_v_PATH); \
+	mv *.v $(ROM1_DATA_v_PATH); 
+
+ROM1_B5_gen:
+	cd $(ROM1_PATH); \
+	$(rodsd_path) verilog  -instname ROM1_B5_$(rom_word_size)_$(double_bit_size) \
+	-code_file $(instnamerom_ROM1_B5) -mux $(MUX) -words $(rom_word_size) \
+	-bits $(double_bit_size) -frequency $(Freq); \
+	mv *.rcf $(ROM1_DATA_v_PATH); \
+	mv *.v $(ROM1_DATA_v_PATH); 
+
+ROM1_B6_gen:
+	cd $(ROM1_PATH); \
+	$(rodsd_path) verilog  -instname ROM1_B6_$(rom_word_size)_$(double_bit_size) \
+	-code_file $(instnamerom_ROM1_B6) -mux $(MUX) -words $(rom_word_size) \
+	-bits $(double_bit_size) -frequency $(Freq); \
+	mv *.rcf $(ROM1_DATA_v_PATH); \
+	mv *.v $(ROM1_DATA_v_PATH); 
+
+ROM1_B7_gen:
+	cd $(ROM1_PATH); \
+	$(rodsd_path) verilog  -instname ROM1_B7_$(rom_word_size)_$(double_bit_size) \
+	-code_file $(instnamerom_ROM1_B7) -mux $(MUX) -words $(rom_word_size) \
+	-bits $(double_bit_size) -frequency $(Freq); \
+	mv *.rcf $(ROM1_DATA_v_PATH); \
+	mv *.v $(ROM1_DATA_v_PATH); 
+
 ## ROM2 gen
-ROM2_all: ROM2_clean ROM2_B0_gen ROM2_B1_gen ROM2_cp_file
+ROM2_all: ROM2_clean ROM2_B0_gen ROM2_B1_gen ROM2_B2_gen ROM2_B3_gen \
+			ROM2_B4_gen ROM2_B5_gen ROM2_B6_gen ROM2_B7_gen ROM2_cp_file
 
 ROM2_clean:
 	rm -rf $(ROM2_PATH)/$(ROM2_DATA_v_PATH)/*.*
@@ -108,9 +205,9 @@ ROM2_cp_file:
 
 ROM2_B0_gen:
 	cd $(ROM2_PATH); \
-	$(rodsd_path) verilog  -instname ROM2_B0_$(rom_word_size)_$(double_bit_size) \
+	$(rodsd_path) verilog  -instname ROM2_B0_$(rom_word_size)_$(bit_size) \
 	-code_file $(instnamerom_ROM2_B0) -mux $(MUX) -words $(rom_word_size) \
-	-bits $(double_bit_size) -frequency $(Freq); \
+	-bits $(bit_size) -frequency $(Freq); \
 	mv *.rcf $(ROM2_DATA_v_PATH); \
 	mv *.v $(ROM2_DATA_v_PATH); 
 
@@ -122,6 +219,53 @@ ROM2_B1_gen:
 	mv *.rcf $(ROM2_DATA_v_PATH); \
 	mv *.v $(ROM2_DATA_v_PATH); 
 
+ROM2_B2_gen:
+	cd $(ROM2_PATH); \
+	$(rodsd_path) verilog  -instname ROM2_B2_$(rom_word_size)_$(double_bit_size) \
+	-code_file $(instnamerom_ROM2_B2) -mux $(MUX) -words $(rom_word_size) \
+	-bits $(double_bit_size) -frequency $(Freq); \
+	mv *.rcf $(ROM2_DATA_v_PATH); \
+	mv *.v $(ROM2_DATA_v_PATH); 
+
+ROM2_B3_gen:
+	cd $(ROM2_PATH); \
+	$(rodsd_path) verilog  -instname ROM2_B3_$(rom_word_size)_$(double_bit_size) \
+	-code_file $(instnamerom_ROM2_B3) -mux $(MUX) -words $(rom_word_size) \
+	-bits $(double_bit_size) -frequency $(Freq); \
+	mv *.rcf $(ROM2_DATA_v_PATH); \
+	mv *.v $(ROM2_DATA_v_PATH); 
+
+ROM2_B4_gen:
+	cd $(ROM2_PATH); \
+	$(rodsd_path) verilog  -instname ROM2_B4_$(rom_word_size)_$(double_bit_size) \
+	-code_file $(instnamerom_ROM2_B4) -mux $(MUX) -words $(rom_word_size) \
+	-bits $(double_bit_size) -frequency $(Freq); \
+	mv *.rcf $(ROM2_DATA_v_PATH); \
+	mv *.v $(ROM2_DATA_v_PATH); 
+
+ROM2_B5_gen:
+	cd $(ROM2_PATH); \
+	$(rodsd_path) verilog  -instname ROM2_B5_$(rom_word_size)_$(double_bit_size) \
+	-code_file $(instnamerom_ROM2_B5) -mux $(MUX) -words $(rom_word_size) \
+	-bits $(double_bit_size) -frequency $(Freq); \
+	mv *.rcf $(ROM2_DATA_v_PATH); \
+	mv *.v $(ROM2_DATA_v_PATH); 
+
+ROM2_B6_gen:
+	cd $(ROM2_PATH); \
+	$(rodsd_path) verilog  -instname ROM2_B6_$(rom_word_size)_$(double_bit_size) \
+	-code_file $(instnamerom_ROM2_B6) -mux $(MUX) -words $(rom_word_size) \
+	-bits $(double_bit_size) -frequency $(Freq); \
+	mv *.rcf $(ROM2_DATA_v_PATH); \
+	mv *.v $(ROM2_DATA_v_PATH); 
+
+ROM2_B7_gen:
+	cd $(ROM2_PATH); \
+	$(rodsd_path) verilog  -instname ROM2_B7_$(rom_word_size)_$(double_bit_size) \
+	-code_file $(instnamerom_ROM2_B7) -mux $(MUX) -words $(rom_word_size) \
+	-bits $(double_bit_size) -frequency $(Freq); \
+	mv *.rcf $(ROM2_DATA_v_PATH); \
+	mv *.v $(ROM2_DATA_v_PATH); 
 #-----------------------------------------------------
 
 #--------------------ROM syn------------------
