@@ -14,7 +14,8 @@
                 AGU_en,                              
                 wrfd_en_in,                          
                 rst_n,                               
-                clk                                  
+                clk,
+                FFT_fin_wire                                  
                 ) ;                                  
  parameter A_WIDTH     = 11;
  parameter DC_WIDTH    = 15;
@@ -55,7 +56,8 @@ parameter S3      = 3'd3;
  input                   AGU_en ;                                    
  input                   wrfd_en_in ;                                
  input                   rst_n ;                                     
- input                   clk ;                                       
+ input                   clk ;    
+ input                   FFT_fin_wire ;                                       
                                                                      
                                                                      
  reg   [1:0]          DC_mode_sel_out;                               
@@ -146,7 +148,7 @@ parameter S3      = 3'd3;
                (SC_wire ==S2)? ({BC_RR_wire[3:0],8'd0}) : 
                  ROMA_ZERO;
    //                                                                                                                 
-   assign Mul_sel_wire = (AGU_en==1'b1)? 1'd1 : 1'd0 ;                                                               
+   assign Mul_sel_wire = (FFT_fin_wire==1'b1)? 1'd0 : 1'd1 ;                                                               
                                                                                                                       
    //                                                                                                                 
    assign RDC_sel_wire = (wrfd_en_in==1'b1) ? RDCsel_cnt_reg : data_cnt_reg[3:0]  ;                                   

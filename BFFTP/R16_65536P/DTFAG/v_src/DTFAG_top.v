@@ -8,6 +8,7 @@ module DTFAG_top (
     input [`radix_width-1:0] DTFAG_t,
     input [`radix_width-1:0] DTFAG_i,
     input [`D_width-1:0] N_in
+
 );
 
     wire ROM_CEN_AGU;
@@ -66,6 +67,7 @@ module DTFAG_top (
     wire [`D_width-1:0]    ROM2_b13    ;
     wire [`D_width-1:0]    ROM2_b14    ;
     wire [`D_width-1:0]    ROM2_b15    ;
+
 
     wire [`D_width-1:0]    Process2_out0     ;
     wire [`D_width-1:0]    Process2_out1     ;
@@ -158,11 +160,15 @@ module DTFAG_top (
         .ROM2_b14  (ROM2_b14),
         .ROM2_b15  (ROM2_b15)
     );
+    
+
+
 
     DTFAG_Mul_process DTFAG_Mul_process(
         // input
         .clk       (clk),
         .rst_n     (rst_n),
+        // ROM
         .ROM0_in0  (ROM0_b0 ),
         .ROM0_in1  (ROM0_b1 ),
         .ROM0_in2  (ROM0_b2 ),

@@ -9,7 +9,9 @@
                 RomCen_out,                                                  
                 rc_sel_out,                            
                 m2_sel_out,                            
-                wrfd_en_out,                           
+                wrfd_en_out,
+                FFT_fin,   
+                // input                        
                 data_cnt_in,                           
                 BND_in,                                
                 ExtValid_in,                           
@@ -52,7 +54,8 @@
  output               RomCen_out ;   
  output               rc_sel_out ;   
  output               m2_sel_out ;   
- output               wrfd_en_out ;  
+ output               wrfd_en_out ; 
+ output               FFT_fin; 
                                      
  input [DC_WIDTH-1:0] data_cnt_in ;  
  input                BND_in ;       
@@ -120,7 +123,7 @@
  	// for RDCsel counter                                                                                                                                          
  	assign wrfd_en_out = (state == WR_FIND) ? 1'b1 : 1'b0 ;                                                                                
  	                                                                                                                                                               
- 	                                                                                                                                                               
+ 	assign FFT_fin = ( (state == SET_OP) || (state ==SET_OPF) || (state ==INI) || (state ==LD_EXTD) )? 1'd1 : 1'd0;                                                                                                                                                     
  	//                                                                                                                                                             
    always @(*) begin                                                                                                                                              
        case(state)                                                                                                                                                

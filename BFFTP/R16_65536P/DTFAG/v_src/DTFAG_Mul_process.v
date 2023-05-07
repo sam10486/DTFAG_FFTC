@@ -122,7 +122,7 @@ module DTFAG_Mul_process (
     reg [`D_width-1:0] ROM2_in14_pip  [0:4];
     reg [`D_width-1:0] ROM2_in15_pip  [0:4];
 
-    reg [`D_width-1:0] ROM2_in0_pip1   [0:2];
+    reg [`D_width-1:0] ROM2_in0_pip1   [0:3];
 
     wire [`D_width-1:0] Process2_out1_tmp   ;
     wire [`D_width-1:0] Process2_out2_tmp   ;
@@ -489,11 +489,11 @@ module DTFAG_Mul_process (
     always @(posedge clk or negedge rst_n) begin: ROM2_data0_pip1
         integer i;
         if (!rst_n) begin
-            for (i = 0; i<2 ; i=i+1) begin
+            for (i = 0; i<3 ; i=i+1) begin
                 ROM2_in0_pip1[i+1] <= 64'd0;
             end
         end else begin
-            for (i = 0; i<2 ; i=i+1) begin
+            for (i = 0; i<3 ; i=i+1) begin
                 ROM2_in0_pip1[i+1] <= ROM2_in0_pip1[i];
             end
         end
@@ -518,7 +518,7 @@ module DTFAG_Mul_process (
             Process2_out14  <= 64'd0    ;
             Process2_out15  <= 64'd0    ;
         end else begin
-            Process2_out0   <= ROM2_in0_pip1[2]      ;
+            Process2_out0   <= ROM2_in0_pip1[3]      ;
             Process2_out1   <= Process2_out1_tmp     ;
             Process2_out2   <= Process2_out2_tmp     ;
             Process2_out3   <= Process2_out3_tmp     ;

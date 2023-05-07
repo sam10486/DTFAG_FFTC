@@ -263,14 +263,16 @@
  wire [DC_WIDTH-1:0]  data_cnt_wire ;                                       
  wire [1:0]           DC_mode_sel_wire ;                                    
                                                                             
- wire                 mode_sel_wire ;                                       
+ wire                 mode_sel_wire ;  
+ wire [P_WIDTH-1:0]   MulA0_wire ;                                     
  wire [P_WIDTH-1:0]   MulA1_wire ;                                          
  wire [P_WIDTH-1:0]   MulA2_wire ;                                          
  wire [P_WIDTH-1:0]   MulA3_wire ;                                          
  wire [P_WIDTH-1:0]   MulA4_wire ;                                          
  wire [P_WIDTH-1:0]   MulA5_wire ;                                          
  wire [P_WIDTH-1:0]   MulA6_wire ;                                          
- wire [P_WIDTH-1:0]   MulA7_wire ;                                          
+ wire [P_WIDTH-1:0]   MulA7_wire ;        
+ wire [P_WIDTH-1:0]   MulA8_wire ;                                  
  wire [P_WIDTH-1:0]   MulA9_wire ;                                          
  wire [P_WIDTH-1:0]   MulA10_wire ;                                         
  wire [P_WIDTH-1:0]   MulA11_wire ;                                         
@@ -287,7 +289,8 @@
  wire [1:0]            Mul_sel_D_wire ;                                     
  wire [3:0]            RDC_sel_D_wire ;                                     
  wire [1:0]            DC_mode_sel_D_wire ;                                 
- wire                  wrfd_en_wire ;                                       
+ wire                  wrfd_en_wire ;        
+ wire                  FFT_fin_wire ;                                 
                                                                             
  wire [P_WIDTH-1:0]    RDC_out0_D_wire ;                                    
  wire [P_WIDTH-1:0]    RDC_out1_D_wire ;                                    
@@ -320,7 +323,7 @@
  //----------DTFAG---------
  wire [3:0]            DTFAG_j;
  wire [3:0]            DTFAG_t;  
- wire [3:0]            DTFAG_i;                                    
+ wire [3:0]            DTFAG_i;                               
                                                                                                   
      //----------------------------------------------------    
  	CenCtrl u_CenCtrl(.MulValid_out(MulValid_out),                            
@@ -333,7 +336,9 @@
  					  .RomCen_out(RomCen_wire),                                                          
  					  .rc_sel_out(rc_sel_wire),                               
  					  .m2_sel_out(m2_sel_wire),  //modify 2020/02/24          
- 					  .wrfd_en_out(wrfd_en_wire),                             
+ 					  .wrfd_en_out(wrfd_en_wire),     
+					  .FFT_fin		(FFT_fin_wire),
+					  // input                        
  					  .data_cnt_in(data_cnt_wire),                            
  					  .BND_in(BND_wire),                                      
  			          .ExtValid_in(ExtValid_in),                              
@@ -357,7 +362,8 @@
  			          .AGU_en(AGU_en_wire),                                   
  					  .wrfd_en_in(wrfd_en_wire),                              
                     .rst_n(rst_n),                                          
-                    .clk(clk)                                               
+                    .clk(clk),
+					.FFT_fin_wire(FFT_fin_wire)                                               
                     ) ;                                                     
  	                                                                          
  	//Control Signal Pipeline Register                                        
@@ -548,14 +554,17 @@
  			    .MulB12_out(MulB12_wire),                                     
  			    .MulB13_out(MulB13_wire),                                     
  			    .MulB14_out(MulB14_wire),                                     
- 			    .MulB15_out(MulB15_wire),                                     
+ 			    .MulB15_out(MulB15_wire), 
+
+				.MulA0_out(MulA0_wire),                                    
  				.MulA1_out(MulA1_wire),                                       
  				.MulA2_out(MulA2_wire),                                       
  				.MulA3_out(MulA3_wire),                                       
  				.MulA4_out(MulA4_wire),                                       
  			    .MulA5_out(MulA5_wire),                                       
  			    .MulA6_out(MulA6_wire),                                       
- 			    .MulA7_out(MulA7_wire),                                       
+ 			    .MulA7_out(MulA7_wire),   
+				.MulA8_out(MulA8_wire),                                     
  			    .MulA9_out(MulA9_wire),                                       
  			    .MulA10_out(MulA10_wire),                                     
  			    .MulA11_out(MulA11_wire),                                     
@@ -572,14 +581,16 @@
  			    .ROMD5_in(ROMD5_D_wire),                                      
  			    .ROMD6_in(ROMD6_D_wire),                                      
  			    .ROMD7_in(ROMD7_D_wire),                                      
-                           
+
+				.RA0D_in(RA0D_out_wire),           
  				.RA1D_in(RA1D_out_wire),                                      
  				.RA2D_in(RA2D_out_wire),                                      
  				.RA3D_in(RA3D_out_wire),                                      
  				.RA4D_in(RA4D_out_wire),                                      
  			    .RA5D_in(RA5D_out_wire),                                      
  			    .RA6D_in(RA6D_out_wire),                                      
- 			    .RA7D_in(RA7D_out_wire),                                      
+ 			    .RA7D_in(RA7D_out_wire),   
+				.RA8D_in(RA8D_out_wire),                                     
  			    .RA9D_in(RA9D_out_wire),                                      
  			    .RA10D_in(RA10D_out_wire),                                    
  			    .RA11D_in(RA11D_out_wire),                                    
@@ -600,7 +611,7 @@
  	                                                                          
  	//                                                                        
  	MulMod128 u0_MulMod128(.S_out(MulMod0_out_wire),                          
-                         .A_in(RA0D_out_wire),                              
+                         .A_in(MulA0_wire),                              
  		                   .B_in(MulB0_wire),                                 
  		                   .N_in(N_D4_wire),                                  
  						   .rst_n(rst_n),                                     
@@ -664,7 +675,7 @@
                             ) ;                                             
  	//                                                                        
  	MulMod128 u8_MulMod128(.S_out(MulMod8_out_wire),                          
-                            .A_in(RA8D_out_wire),                           
+                            .A_in(MulA8_wire),                           
  		                   .B_in(MulB8_wire),                                 
  		                   .N_in(N_D4_wire),                                  
  						   .rst_n(rst_n),                                     
@@ -852,7 +863,7 @@
  					                  .ROMD4_Dout(ROMD4_D_wire),              
  					                  .ROMD5_Dout(ROMD5_D_wire),              
  					                  .ROMD6_Dout(ROMD6_D_wire),              
- 					                  .ROMD7_Dout(ROMD7_D_wire),              
+ 					                  .ROMD7_Dout(ROMD7_D_wire),        
  	     
  			                          .ROMD0_in(ROMD0_out_wire),              
  					                  .ROMD1_in(ROMD1_out_wire),              
@@ -864,7 +875,7 @@
  					                  .ROMD7_in(ROMD7_out_wire),              
      
                                        .rst_n(rst_n),                       
-                                       .clk(clk)                            
+                                       .clk(clk)                         
                                        ) ;		                          
  	//---FFT1----------------------------------------------                   
  	//Bank0 Mem0                                                              
@@ -1068,12 +1079,12 @@
 	//---------------DTFAG--------------------
 	DTFAG_top DTFAG_top(
 		// input
-		.clk		(clk		),
-		.rst_n		(rst_n		),
-		.ROM_CEN	(RomCen_wire),
-		.DTFAG_j	(DTFAG_j	),
-		.DTFAG_t	(DTFAG_t  	),
-		.DTFAG_i	(DTFAG_i   	),
-		.N_in		(N_in		)
+		.clk			(clk		),
+		.rst_n			(rst_n		),
+		.ROM_CEN		(RomCen_wire),
+		.DTFAG_j		(DTFAG_j	),
+		.DTFAG_t		(DTFAG_t  	),
+		.DTFAG_i		(DTFAG_i   	),
+		.N_in			(N_in		)
 	);                
  endmodule                                                                  
