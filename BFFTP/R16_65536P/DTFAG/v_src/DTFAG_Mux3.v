@@ -33,7 +33,7 @@ module DTFAG_Mux3(
 			  R16_in13,                                                                      
 			  R16_in14,                                                                      
 			  R16_in15,                                                                      
-			  Mul_sel,                                                                                                 
+			  Mul_sel                                                                                               
 			  ) ;                                                                            
 			                                                                                 
 parameter P_WIDTH   = 64 ;                                                                 

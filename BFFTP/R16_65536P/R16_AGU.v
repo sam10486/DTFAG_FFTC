@@ -51,7 +51,7 @@ parameter S3      = 3'd3;
  output reg [3:0]            DTFAG_j;
  output reg [3:0]            DTFAG_t;  
  output reg [3:0]            DTFAG_i;
- output reg [1:0]            FFT_stage;     
+ output     [1:0]            FFT_stage;     
 
                                                                                                   
  input                   rc_sel_in ;                                 

@@ -48,7 +48,8 @@ R16_ALL: SRAM ROM_R16
 R16_ALL_COVERAGE: SRAM ROM_R16
 	cd $(FFTC_PATH)/BFFTP/R$(RADIX)_$(FFT_POINT)P ; \
 	irun test_FFTP.v +access+r +notimingchecks -coverage all
-R16_ALL_SYN: SRAM_syn ROM_R16_syn LIB_TO_DB SYN 
+#R16_ALL_SYN: SRAM_syn ROM_R16_syn LIB_TO_DB SYN 
+R16_ALL_SYN: SRAM_syn LIB_TO_DB SYN 
 	cd $(FFTC_PATH)/syn/dv ; \
 	dc_shell -f syn_script_r16.tcl
 	cp $(FFTC_PATH)/syn/gate_netlist/* $(FFTC_PATH)/syn/vlog

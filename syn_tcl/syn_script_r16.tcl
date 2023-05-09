@@ -1,7 +1,7 @@
 set company  "VLSILAB"
 set designer "Shi-Yong Wu"
 set search_path      ". /usr/cad/synopsys/CBDK_TSMC90GUTM_Arm_f1.0/CIC/SynopsysDC/db ../Mem_lib $search_path"
-set target_library   "typical.db SRAM_SP_2048_128.db ROM0_4096_64.db ROM1_4096_128.db ROM2_4096_128.db ROM3_4096_128.db ROM4_4096_128.db ROM5_4096_128.db ROM6_4096_128.db ROM7_4096_128.db"
+set target_library   "typical.db SRAM_SP_2048_128.db"
 #set target_library  "slow.db fast.db"
 set link_library     "* $target_library dw_foundation.sldb"
 set symbol_library   "tsmc090.sdb generic.sdb"
@@ -33,6 +33,11 @@ analyze -format verilog ../vlog/DTFAG/v_src/DTFAG_top.v
 analyze -format verilog ../vlog/DTFAG/v_src/DTFAG_AGU.v
 analyze -format verilog ../vlog/DTFAG/v_src/Memory_wrapper.v
 analyze -format verilog ../vlog/DTFAG/v_src/Register_file.v   
+analyze -format verilog ../vlog/DTFAG/v_src/DTFAG_Mul_process.v
+analyze -format verilog ../vlog/DTFAG/v_src/DTFAG_Mux3.v  
+analyze -format verilog ../vlog/DTFAG/v_src/R16_input_delay.v
+analyze -format verilog ../vlog/DTFAG/v_src/R16_TF_mul.v          
+analyze -format verilog ../vlog/DTFAG/v_src/R16_WD_delay.v   
 
 analyze -format verilog ../vlog/DTFAG/v_include/define.v
 #-------------------------------------
@@ -56,7 +61,7 @@ analyze -format verilog ../vlog/MulMod128.v
 analyze -format verilog ../vlog/MulMod128PD.v       
 analyze -format verilog ../vlog/Mux1.v              
 analyze -format verilog ../vlog/Mux2.v              
-analyze -format verilog ../vlog/Mux3.v              
+#analyze -format verilog ../vlog/Mux3.v              
 analyze -format verilog ../vlog/Mux4.v              
 analyze -format verilog ../vlog/R16_AGU.v           
 analyze -format verilog ../vlog/R16_DC.v            
@@ -65,9 +70,9 @@ analyze -format verilog ../vlog/R16_NPipeReg3.v
 analyze -format verilog ../vlog/R16_PipeReg2.v      
 analyze -format verilog ../vlog/R16_PipeReg4.v      
 analyze -format verilog ../vlog/R16_PipeReg4_2.v    
-analyze -format verilog ../vlog/R16_ROMPipeReg1.v   
+#analyze -format verilog ../vlog/R16_ROMPipeReg1.v   
 analyze -format verilog ../vlog/R16_WAddr.v         
-analyze -format verilog ../vlog/R16_WD_buf.v        
+#analyze -format verilog ../vlog/R16_WD_buf.v        
 analyze -format verilog ../vlog/BU_S0.v             
 analyze -format verilog ../vlog/BU.v                
 analyze -format verilog ../vlog/Pipe.v              
@@ -77,7 +82,8 @@ analyze -format verilog ../vlog/Radix16_Pipe.v
 elaborate FFTP -architecture verilog                
                                                     
 current_design FFTP                                 
-link                                                
+link    
+#check_design                                            
 uniquify                                            
 set_operating_conditions -max typical -max_library typical -min typical -min_library typical    
 #set_operating_conditions -max slow -max_library slow -min fast -min_library fast               
@@ -97,7 +103,8 @@ set_load [load_of typical/DFFX2/D] [all_outputs]
 #set_load [load_of slow/DFFX2/D] [all_outputs]                                                  
 set_input_delay 0.2 -clock clk [remove_from_collection [all_inputs] [get_ports {clk}]]          
 set_output_delay 0.2 -max -clock clk [all_outputs]                                              
-set_fix_multiple_port_nets -all -buffer_constants                                               
+set_fix_multiple_port_nets -all -buffer_constants     
+set_host_options -max_cores 8                                             
 #set_case_analysis 1 [get_ports rst_n]                                                          
 #set_max_area 0                                                                                 
                                                                                                 

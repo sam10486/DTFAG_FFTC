@@ -20,22 +20,22 @@ module R16_input_delay (
     input [`D_width-1:0] data_in14  ,
     input [`D_width-1:0] data_in15  ,
 
-    output reg [`D_width-1:0] R16_out_delay_data0   ,
-    output reg [`D_width-1:0] R16_out_delay_data1   ,
-    output reg [`D_width-1:0] R16_out_delay_data2   ,
-    output reg [`D_width-1:0] R16_out_delay_data3   ,
-    output reg [`D_width-1:0] R16_out_delay_data4   ,
-    output reg [`D_width-1:0] R16_out_delay_data5   ,
-    output reg [`D_width-1:0] R16_out_delay_data6   ,
-    output reg [`D_width-1:0] R16_out_delay_data7   ,
-    output reg [`D_width-1:0] R16_out_delay_data8   ,
-    output reg [`D_width-1:0] R16_out_delay_data9   ,
-    output reg [`D_width-1:0] R16_out_delay_data10  ,
-    output reg [`D_width-1:0] R16_out_delay_data11  ,
-    output reg [`D_width-1:0] R16_out_delay_data12  ,
-    output reg [`D_width-1:0] R16_out_delay_data13  ,
-    output reg [`D_width-1:0] R16_out_delay_data14  ,
-    output reg [`D_width-1:0] R16_out_delay_data15  
+    output [`D_width-1:0] R16_out_delay_data0   ,
+    output [`D_width-1:0] R16_out_delay_data1   ,
+    output [`D_width-1:0] R16_out_delay_data2   ,
+    output [`D_width-1:0] R16_out_delay_data3   ,
+    output [`D_width-1:0] R16_out_delay_data4   ,
+    output [`D_width-1:0] R16_out_delay_data5   ,
+    output [`D_width-1:0] R16_out_delay_data6   ,
+    output [`D_width-1:0] R16_out_delay_data7   ,
+    output [`D_width-1:0] R16_out_delay_data8   ,
+    output [`D_width-1:0] R16_out_delay_data9   ,
+    output [`D_width-1:0] R16_out_delay_data10  ,
+    output [`D_width-1:0] R16_out_delay_data11  ,
+    output [`D_width-1:0] R16_out_delay_data12  ,
+    output [`D_width-1:0] R16_out_delay_data13  ,
+    output [`D_width-1:0] R16_out_delay_data14  ,
+    output [`D_width-1:0] R16_out_delay_data15  
 
 );
 
