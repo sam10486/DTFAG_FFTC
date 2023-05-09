@@ -8,7 +8,8 @@
                 DC_mode_sel_out,   
                 DTFAG_j,
                 DTFAG_t,
-                DTFAG_i,         
+                DTFAG_i,  
+                FFT_stage,       
                 //input                                  
                 rc_sel_in,                           
                 AGU_en,                              
@@ -49,7 +50,8 @@ parameter S3      = 3'd3;
  output [1:0]            DC_mode_sel_out ;    
  output reg [3:0]            DTFAG_j;
  output reg [3:0]            DTFAG_t;  
- output reg [3:0]            DTFAG_i;     
+ output reg [3:0]            DTFAG_i;
+ output reg [1:0]            FFT_stage;     
 
                                                                                                   
  input                   rc_sel_in ;                                 
@@ -184,23 +186,47 @@ parameter S3      = 3'd3;
 
 
   //-------------DTFAG parameter-------------------------
-  reg [1:0] DTFAG_cnt;
-  
+  reg [1:0] FFT_stage_tmp;
+  reg [1:0] FFT_stage_pip [0:48];
   always @(posedge clk or negedge rst_n) begin
     if (~rst_n) begin
-      DTFAG_cnt <= 2'd0;
+      FFT_stage_tmp <= 2'd0;
     end else begin
-      if (AGU_en) begin
-        if (DTFAG_cnt == 2'd3) begin
-          DTFAG_cnt <= 2'd0;
-        end else begin
-          DTFAG_cnt <= DTFAG_cnt + 2'd1;
+      case (data_cnt_reg[DC_WIDTH-1:DC_WIDTH-1-2])
+        3'b000: begin
+          FFT_stage_tmp <= 2'd0;
         end
-      end else begin
-        DTFAG_cnt <= 2'd0;
+        3'b001: begin
+          FFT_stage_tmp <= 2'd1;
+        end
+        3'b010: begin
+          FFT_stage_tmp <= 2'd2;
+        end
+        3'b011: begin
+          FFT_stage_tmp <= 2'd3;
+        end 
+        default: begin
+          FFT_stage_tmp <= 2'd0;
+        end 
+      endcase
+    end
+  end
+  always @(*) begin
+    FFT_stage_pip[0] = FFT_stage_tmp;
+  end
+  always @(posedge clk or negedge rst_n) begin: delay_48
+    integer i;
+    if (~rst_n) begin
+      for (i = 0; i<48 ; i=i+1) begin
+        FFT_stage_pip[i+1] <= 2'd0;
+      end
+    end else begin
+      for (i = 0; i<48; i=i+1) begin
+        FFT_stage_pip[i+1] <= FFT_stage_pip[i];
       end
     end
   end
+  assign FFT_stage = FFT_stage_pip[48];
 
   always @(posedge clk or negedge rst_n) begin
     if (~rst_n) begin

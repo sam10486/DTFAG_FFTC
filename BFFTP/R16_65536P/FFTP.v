@@ -224,38 +224,38 @@
  wire [P_WIDTH-1:0]   MulB13_wire ;                                         
  wire [P_WIDTH-1:0]   MulB14_wire ;                                         
  wire [P_WIDTH-1:0]   MulB15_wire ;                                         
- wire [P_WIDTH-1:0]   MulMod0_out_wire ;                                    
- wire [P_WIDTH-1:0]   MulMod1_out_wire ;                                    
- wire [P_WIDTH-1:0]   MulMod2_out_wire ;                                    
- wire [P_WIDTH-1:0]   MulMod3_out_wire ;                                    
- wire [P_WIDTH-1:0]   MulMod4_out_wire ;                                    
- wire [P_WIDTH-1:0]   MulMod5_out_wire ;                                    
- wire [P_WIDTH-1:0]   MulMod6_out_wire ;                                    
- wire [P_WIDTH-1:0]   MulMod7_out_wire ;                                    
- wire [P_WIDTH-1:0]   MulMod8_out_wire ;                                    
- wire [P_WIDTH-1:0]   MulMod9_out_wire ;                                    
- wire [P_WIDTH-1:0]   MulMod10_out_wire ;                                   
- wire [P_WIDTH-1:0]   MulMod11_out_wire ;                                   
- wire [P_WIDTH-1:0]   MulMod12_out_wire ;                                   
- wire [P_WIDTH-1:0]   MulMod13_out_wire ;                                   
- wire [P_WIDTH-1:0]   MulMod14_out_wire ;                                   
- wire [P_WIDTH-1:0]   MulMod15_out_wire ;                                   
- wire [P_WIDTH-1:0]   RDC_out0_wire ;                                       
- wire [P_WIDTH-1:0]   RDC_out1_wire ;                                       
- wire [P_WIDTH-1:0]   RDC_out2_wire ;                                       
- wire [P_WIDTH-1:0]   RDC_out3_wire ;                                       
- wire [P_WIDTH-1:0]   RDC_out4_wire ;                                       
- wire [P_WIDTH-1:0]   RDC_out5_wire ;                                       
- wire [P_WIDTH-1:0]   RDC_out6_wire ;                                       
- wire [P_WIDTH-1:0]   RDC_out7_wire ;                                       
- wire [P_WIDTH-1:0]   RDC_out8_wire ;                                       
- wire [P_WIDTH-1:0]   RDC_out9_wire ;                                       
- wire [P_WIDTH-1:0]   RDC_out10_wire ;                                      
- wire [P_WIDTH-1:0]   RDC_out11_wire ;                                      
- wire [P_WIDTH-1:0]   RDC_out12_wire ;                                      
- wire [P_WIDTH-1:0]   RDC_out13_wire ;                                      
- wire [P_WIDTH-1:0]   RDC_out14_wire ;                                      
- wire [P_WIDTH-1:0]   RDC_out15_wire ;                                      
+ //wire [P_WIDTH-1:0]   MulMod0_out_wire ;                                    
+ //wire [P_WIDTH-1:0]   MulMod1_out_wire ;                                    
+ //wire [P_WIDTH-1:0]   MulMod2_out_wire ;                                    
+ //wire [P_WIDTH-1:0]   MulMod3_out_wire ;                                    
+ //wire [P_WIDTH-1:0]   MulMod4_out_wire ;                                    
+ //wire [P_WIDTH-1:0]   MulMod5_out_wire ;                                    
+ //wire [P_WIDTH-1:0]   MulMod6_out_wire ;                                    
+ //wire [P_WIDTH-1:0]   MulMod7_out_wire ;                                    
+ //wire [P_WIDTH-1:0]   MulMod8_out_wire ;                                    
+ //wire [P_WIDTH-1:0]   MulMod9_out_wire ;                                    
+ //wire [P_WIDTH-1:0]   MulMod10_out_wire ;                                   
+ //wire [P_WIDTH-1:0]   MulMod11_out_wire ;                                   
+ //wire [P_WIDTH-1:0]   MulMod12_out_wire ;                                   
+ //wire [P_WIDTH-1:0]   MulMod13_out_wire ;                                   
+ //wire [P_WIDTH-1:0]   MulMod14_out_wire ;                                   
+ //wire [P_WIDTH-1:0]   MulMod15_out_wire ;                                   
+ //wire [P_WIDTH-1:0]   RDC_out0_wire ;                                       
+ //wire [P_WIDTH-1:0]   RDC_out1_wire ;                                       
+ //wire [P_WIDTH-1:0]   RDC_out2_wire ;                                       
+ //wire [P_WIDTH-1:0]   RDC_out3_wire ;                                       
+ //wire [P_WIDTH-1:0]   RDC_out4_wire ;                                       
+ //wire [P_WIDTH-1:0]   RDC_out5_wire ;                                       
+ //wire [P_WIDTH-1:0]   RDC_out6_wire ;                                       
+ //wire [P_WIDTH-1:0]   RDC_out7_wire ;                                       
+ //wire [P_WIDTH-1:0]   RDC_out8_wire ;                                       
+ //wire [P_WIDTH-1:0]   RDC_out9_wire ;                                       
+ //wire [P_WIDTH-1:0]   RDC_out10_wire ;                                      
+ //wire [P_WIDTH-1:0]   RDC_out11_wire ;                                      
+ //wire [P_WIDTH-1:0]   RDC_out12_wire ;                                      
+ //wire [P_WIDTH-1:0]   RDC_out13_wire ;                                      
+ //wire [P_WIDTH-1:0]   RDC_out14_wire ;                                      
+ //wire [P_WIDTH-1:0]   RDC_out15_wire ;                                      
  wire [3:0]           RDC_sel_wire ;                                        
  wire                 BND_wire ;                                            
  wire [A_WIDTH-1:0]   WMA_wire ;                                            
@@ -292,22 +292,22 @@
  wire                  wrfd_en_wire ;        
  wire                  FFT_fin_wire ;                                 
                                                                             
- wire [P_WIDTH-1:0]    RDC_out0_D_wire ;                                    
- wire [P_WIDTH-1:0]    RDC_out1_D_wire ;                                    
- wire [P_WIDTH-1:0]    RDC_out2_D_wire ;                                    
- wire [P_WIDTH-1:0]    RDC_out3_D_wire ;                                    
- wire [P_WIDTH-1:0]    RDC_out4_D_wire ;                                    
- wire [P_WIDTH-1:0]    RDC_out5_D_wire ;                                    
- wire [P_WIDTH-1:0]    RDC_out6_D_wire ;                                    
- wire [P_WIDTH-1:0]    RDC_out7_D_wire ;                                    
- wire [P_WIDTH-1:0]    RDC_out8_D_wire ;                                    
- wire [P_WIDTH-1:0]    RDC_out9_D_wire ;                                    
- wire [P_WIDTH-1:0]    RDC_out10_D_wire ;                                   
- wire [P_WIDTH-1:0]    RDC_out11_D_wire ;                                   
- wire [P_WIDTH-1:0]    RDC_out12_D_wire ;                                   
- wire [P_WIDTH-1:0]    RDC_out13_D_wire ;                                   
- wire [P_WIDTH-1:0]    RDC_out14_D_wire ;                                   
- wire [P_WIDTH-1:0]    RDC_out15_D_wire ;                                   
+ //wire [P_WIDTH-1:0]    RDC_out0_D_wire ;                                    
+ //wire [P_WIDTH-1:0]    RDC_out1_D_wire ;                                    
+ //wire [P_WIDTH-1:0]    RDC_out2_D_wire ;                                    
+ //wire [P_WIDTH-1:0]    RDC_out3_D_wire ;                                    
+ //wire [P_WIDTH-1:0]    RDC_out4_D_wire ;                                    
+ //wire [P_WIDTH-1:0]    RDC_out5_D_wire ;                                    
+ //wire [P_WIDTH-1:0]    RDC_out6_D_wire ;                                    
+ //wire [P_WIDTH-1:0]    RDC_out7_D_wire ;                                    
+ //wire [P_WIDTH-1:0]    RDC_out8_D_wire ;                                    
+ //wire [P_WIDTH-1:0]    RDC_out9_D_wire ;                                    
+ //wire [P_WIDTH-1:0]    RDC_out10_D_wire ;                                   
+ //wire [P_WIDTH-1:0]    RDC_out11_D_wire ;                                   
+ //wire [P_WIDTH-1:0]    RDC_out12_D_wire ;                                   
+ //wire [P_WIDTH-1:0]    RDC_out13_D_wire ;                                   
+ //wire [P_WIDTH-1:0]    RDC_out14_D_wire ;                                   
+ //wire [P_WIDTH-1:0]    RDC_out15_D_wire ;                                   
                                                                             
                                                                             
  wire [P_WIDTH-1:0]    N_D4_wire ;                                          
@@ -323,7 +323,25 @@
  //----------DTFAG---------
  wire [3:0]            DTFAG_j;
  wire [3:0]            DTFAG_t;  
- wire [3:0]            DTFAG_i;                               
+ wire [3:0]            DTFAG_i; 
+ wire [1:0]			   FFT_stage;      
+ wire [P_WIDTH-1:0] R16_TF_Mul_DC_delay0 	;
+ wire [P_WIDTH-1:0] R16_TF_Mul_DC_delay1 	;
+ wire [P_WIDTH-1:0] R16_TF_Mul_DC_delay2 	;
+ wire [P_WIDTH-1:0] R16_TF_Mul_DC_delay3 	;
+ wire [P_WIDTH-1:0] R16_TF_Mul_DC_delay4 	;
+ wire [P_WIDTH-1:0] R16_TF_Mul_DC_delay5 	;
+ wire [P_WIDTH-1:0] R16_TF_Mul_DC_delay6 	;
+ wire [P_WIDTH-1:0] R16_TF_Mul_DC_delay7 	;
+ wire [P_WIDTH-1:0] R16_TF_Mul_DC_delay8 	;
+ wire [P_WIDTH-1:0] R16_TF_Mul_DC_delay9 	;
+ wire [P_WIDTH-1:0] R16_TF_Mul_DC_delay10	;
+ wire [P_WIDTH-1:0] R16_TF_Mul_DC_delay11	;
+ wire [P_WIDTH-1:0] R16_TF_Mul_DC_delay12	;
+ wire [P_WIDTH-1:0] R16_TF_Mul_DC_delay13	;
+ wire [P_WIDTH-1:0] R16_TF_Mul_DC_delay14	;
+ wire [P_WIDTH-1:0] R16_TF_Mul_DC_delay15	;        
+           
                                                                                                   
      //----------------------------------------------------    
  	CenCtrl u_CenCtrl(.MulValid_out(MulValid_out),                            
@@ -357,6 +375,7 @@
 					  .DTFAG_j(DTFAG_j),
                 	  .DTFAG_t(DTFAG_t),
                 	  .DTFAG_i(DTFAG_i), 
+					  .FFT_stage(FFT_stage),
 					  //input                          	                                       
  					  .rc_sel_in(rc_sel_wire),                                
  			          .AGU_en(AGU_en_wire),                                   
@@ -440,22 +459,22 @@
  			    .ExtB1_D14_in(ExtB1_D14_in),                                  
  			    .ExtB1_D15_in(ExtB1_D15_in),         
 
- 				.RDC_in0(RDC_out0_D_wire),                                    
- 				.RDC_in1(RDC_out1_D_wire),                                    
- 				.RDC_in2(RDC_out2_D_wire),                                    
- 				.RDC_in3(RDC_out3_D_wire),                                    
- 				.RDC_in4(RDC_out4_D_wire),                                    
- 			    .RDC_in5(RDC_out5_D_wire),                                    
- 			    .RDC_in6(RDC_out6_D_wire),                                    
- 			    .RDC_in7(RDC_out7_D_wire),                                    
- 			    .RDC_in8(RDC_out8_D_wire),                                    
- 			    .RDC_in9(RDC_out9_D_wire),                                    
- 			    .RDC_in10(RDC_out10_D_wire),                                  
- 			    .RDC_in11(RDC_out11_D_wire),                                  
- 			    .RDC_in12(RDC_out12_D_wire),                                  
- 			    .RDC_in13(RDC_out13_D_wire),                                  
- 			    .RDC_in14(RDC_out14_D_wire),                                  
- 			    .RDC_in15(RDC_out15_D_wire),                                  
+ 				.RDC_in0 (R16_TF_Mul_DC_delay0 ),                                    
+ 				.RDC_in1 (R16_TF_Mul_DC_delay1 ),                                    
+ 				.RDC_in2 (R16_TF_Mul_DC_delay2 ),                                    
+ 				.RDC_in3 (R16_TF_Mul_DC_delay3 ),                                    
+ 				.RDC_in4 (R16_TF_Mul_DC_delay4 ),                                    
+ 			    .RDC_in5 (R16_TF_Mul_DC_delay5 ),                                    
+ 			    .RDC_in6 (R16_TF_Mul_DC_delay6 ),                                    
+ 			    .RDC_in7 (R16_TF_Mul_DC_delay7 ),                                    
+ 			    .RDC_in8 (R16_TF_Mul_DC_delay8 ),                                    
+ 			    .RDC_in9 (R16_TF_Mul_DC_delay9 ),                                    
+ 			    .RDC_in10(R16_TF_Mul_DC_delay10),                                  
+ 			    .RDC_in11(R16_TF_Mul_DC_delay11),                                  
+ 			    .RDC_in12(R16_TF_Mul_DC_delay12),                                  
+ 			    .RDC_in13(R16_TF_Mul_DC_delay13),                                  
+ 			    .RDC_in14(R16_TF_Mul_DC_delay14),                                  
+ 			    .RDC_in15(R16_TF_Mul_DC_delay15),                                  
  				.ExtMA_in(ExtMA_wire),                                        
  				.AGUMA_in(AGUMA_wire),                                        
  				.WMA_in(WMA_wire),                                            
@@ -536,7 +555,8 @@
  		                        .N_in(N_in),                                  
                                 .rst_n(rst_n),                                
                                 .clk(clk)                                     
-                              ) ;                                           
+                              ) ;     
+	/*						                                        
  	//                                                                        
  	//for Mul                                                                 
  	Mux3 u_Mux3(.MulB0_out(MulB0_wire),                                       
@@ -582,16 +602,16 @@
  			    .ROMD6_in(ROMD6_D_wire),                                      
  			    .ROMD7_in(ROMD7_D_wire),                                      
 
-				.RA0D_in(RA0D_out_wire),           
- 				.RA1D_in(RA1D_out_wire),                                      
- 				.RA2D_in(RA2D_out_wire),                                      
- 				.RA3D_in(RA3D_out_wire),                                      
- 				.RA4D_in(RA4D_out_wire),                                      
- 			    .RA5D_in(RA5D_out_wire),                                      
- 			    .RA6D_in(RA6D_out_wire),                                      
- 			    .RA7D_in(RA7D_out_wire),   
-				.RA8D_in(RA8D_out_wire),                                     
- 			    .RA9D_in(RA9D_out_wire),                                      
+				.RA0D_in (RA0D_out_wire ),           
+ 				.RA1D_in (RA1D_out_wire ),                                      
+ 				.RA2D_in (RA2D_out_wire ),                                      
+ 				.RA3D_in (RA3D_out_wire ),                                      
+ 				.RA4D_in (RA4D_out_wire ),                                      
+ 			    .RA5D_in (RA5D_out_wire ),                                      
+ 			    .RA6D_in (RA6D_out_wire ),                                      
+ 			    .RA7D_in (RA7D_out_wire ),   
+				.RA8D_in (RA8D_out_wire ),                                     
+ 			    .RA9D_in (RA9D_out_wire ),                                      
  			    .RA10D_in(RA10D_out_wire),                                    
  			    .RA11D_in(RA11D_out_wire),                                    
  			    .RA12D_in(RA12D_out_wire),                                    
@@ -601,14 +621,14 @@
  			    .Mul_sel(Mul_sel_D_wire)                                  
                                   
  			    ) ;                                                           
- 	                                                                          
+ 	*/                                                                          
  	//Pipeline Register                                                       
  	R16_NPipeReg3 u_R16_NPipeReg3(.N_D4_out(N_D4_wire),                       
                                    .N_in(N_in),                             
                                    .rst_n(rst_n),                           
                                    .clk(clk)                                
                                    ) ;                                      
- 	                                                                          
+ 	/*                                                                          
  	//                                                                        
  	MulMod128 u0_MulMod128(.S_out(MulMod0_out_wire),                          
                          .A_in(MulA0_wire),                              
@@ -815,7 +835,7 @@
                             .rst_n(rst_n),                                    
                             .clk(clk)                                         
                           ) ;                                               
- 	                                                                          
+ 	*/                                                                          
  	//-----------------------------------------------------                   
  	// for CRUR16                                                             
  	Mux4 u_Mux4(.Result0_out(MulD0_out),                                       
@@ -854,7 +874,7 @@
  	                                                                          
  	                                                                          
  	                                                                          
- 	                                                                          
+ 	/*                                                                          
  	//Pipeline Register				                                          
  	R16_ROMPipeReg1 u_R16_ROMPipeReg1(.ROMD0_Dout(ROMD0_D_wire),              
  				                      .ROMD1_Dout(ROMD1_D_wire),              
@@ -876,7 +896,8 @@
      
                                        .rst_n(rst_n),                       
                                        .clk(clk)                         
-                                       ) ;		                          
+                                       ) ;	
+	*/								   	                          
  	//---FFT1----------------------------------------------                   
  	//Bank0 Mem0                                                              
   SRAM_SP_2048_128 u0_SRAM_SP_2048_128 (.Q(Data_out0),
@@ -1025,7 +1046,7 @@
                                             .EMA(3'd0)                  
                                             );						      
      //-----------------------------------------------------     
-                 
+    /*             
      //FFT ROM0                                                             
  	ROM0_4096_64 u_ROM0_4096_64 (.Q(ROMD0_out_wire),
                                   .CLK(clk),                                
@@ -1074,8 +1095,8 @@
                                     .CEN(RomCen_wire),                      
                                     .A(ROMA_wire)                           
                                     );                                      
-
-
+	
+	*/
 	//---------------DTFAG--------------------
 	DTFAG_top DTFAG_top(
 		// input
@@ -1085,6 +1106,46 @@
 		.DTFAG_j		(DTFAG_j	),
 		.DTFAG_t		(DTFAG_t  	),
 		.DTFAG_i		(DTFAG_i   	),
-		.N_in			(N_in		)
-	);                
+		.N_in			(N_in		),
+		.FFT_stage_in  	(FFT_stage	),
+		.Mul_sel_in		(Mul_sel_D_wire),
+		.R16_data_in0 	(RA0D_out_wire ),
+		.R16_data_in1 	(RA1D_out_wire ),
+		.R16_data_in2 	(RA2D_out_wire ),
+		.R16_data_in3 	(RA3D_out_wire ),
+		.R16_data_in4 	(RA4D_out_wire ),
+		.R16_data_in5 	(RA5D_out_wire ),
+		.R16_data_in6 	(RA6D_out_wire ),
+		.R16_data_in7 	(RA7D_out_wire ),
+		.R16_data_in8 	(RA8D_out_wire ),
+		.R16_data_in9 	(RA9D_out_wire ),
+		.R16_data_in10	(RA10D_out_wire),
+		.R16_data_in11	(RA11D_out_wire),
+		.R16_data_in12	(RA12D_out_wire),
+		.R16_data_in13	(RA13D_out_wire),
+		.R16_data_in14	(RA14D_out_wire),
+		.R16_data_in15	(RA15D_out_wire),
+		.RDC_sel_D_in   (RDC_sel_D_wire),
+		.DC_mode_sel_in (DC_mode_sel_D_wire),
+		// output
+		.R16_TF_Mul_DC_delay0 (R16_TF_Mul_DC_delay0 ),
+		.R16_TF_Mul_DC_delay1 (R16_TF_Mul_DC_delay1 ),
+		.R16_TF_Mul_DC_delay2 (R16_TF_Mul_DC_delay2 ),
+		.R16_TF_Mul_DC_delay3 (R16_TF_Mul_DC_delay3 ),
+		.R16_TF_Mul_DC_delay4 (R16_TF_Mul_DC_delay4 ),
+		.R16_TF_Mul_DC_delay5 (R16_TF_Mul_DC_delay5 ),
+		.R16_TF_Mul_DC_delay6 (R16_TF_Mul_DC_delay6 ),
+		.R16_TF_Mul_DC_delay7 (R16_TF_Mul_DC_delay7 ),
+		.R16_TF_Mul_DC_delay8 (R16_TF_Mul_DC_delay8 ),
+		.R16_TF_Mul_DC_delay9 (R16_TF_Mul_DC_delay9 ),
+		.R16_TF_Mul_DC_delay10(R16_TF_Mul_DC_delay10),
+		.R16_TF_Mul_DC_delay11(R16_TF_Mul_DC_delay11),
+		.R16_TF_Mul_DC_delay12(R16_TF_Mul_DC_delay12),
+		.R16_TF_Mul_DC_delay13(R16_TF_Mul_DC_delay13),
+		.R16_TF_Mul_DC_delay14(R16_TF_Mul_DC_delay14),
+		.R16_TF_Mul_DC_delay15(R16_TF_Mul_DC_delay15)
+	);    
+
+	
+	 
  endmodule                                                                  
